@@ -601,6 +601,29 @@ table.st .venue b{color:var(--accent);font-weight:700}
 .opt .cand div.p{background:var(--ok-soft);font-weight:600}
 .opt .cand .r{font-family:"IBM Plex Mono",monospace;color:var(--text-2)}
 
+
+/* ── 11/21 분기 (공개본에도 노출: 고사일정 기반) ── */
+.branch{margin-top:14px;display:grid;gap:9px}
+@media(min-width:700px){.branch{grid-template-columns:1fr 1fr}}
+.br{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:13px;box-shadow:var(--shadow)}
+.br.yes{border-color:var(--ok);border-width:2px}
+.br.no{border-color:var(--line-2)}
+.br .bh{display:flex;gap:7px;align-items:center;margin-bottom:4px;flex-wrap:wrap}
+.br .bt{font-size:12.5px;font-weight:800}
+.br .bg{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:99px;font-family:"IBM Plex Mono",monospace}
+.br.yes .bg{background:var(--ok-soft);color:var(--ok)}
+.br.no .bg{background:var(--accent-soft);color:var(--accent)}
+.br .bs{font-size:11px;color:var(--text-2);font-family:"IBM Plex Mono",monospace;margin-bottom:6px}
+.br .brs{font-size:11.5px;line-height:1.55;color:var(--text);margin-bottom:8px}
+.br .brs b{color:var(--accent)}
+.br .dl{display:grid;gap:2px;max-height:210px;overflow-y:auto}
+.br .dl div{font-size:11px;display:grid;grid-template-columns:1fr auto auto;gap:6px;
+  padding:3px 7px;border-radius:5px;background:var(--paper);align-items:center}
+.br .dl div.hl{background:var(--tier1-soft);font-weight:600}
+.br .dl .q{font-family:"IBM Plex Mono",monospace;color:var(--text-2);font-size:10.5px}
+.br .dl .r{font-family:"IBM Plex Mono",monospace;font-size:10.5px}
+.br .nt{font-size:10.5px;color:var(--text-3);line-height:1.5;margin-top:7px}
+
 /* ── footnote ───────────────────────── */
 .note{
   font-size:12px;color:var(--text-3);line-height:1.6;
@@ -1809,6 +1832,40 @@ function renderPick(){
     <div class="opts">${opts}</div>`;
 }
 
+
+/* 11/21 고려대 학과 선택 → 경희대 응시 가능 여부 분기 */
+function renderBranch(){
+  const host = document.getElementById("clash");
+  if(!host) return;
+  const B = (window.DATA.shortlist||{}).tradeoff_1121;
+  if(!B) return;   // 공개본에는 없을 수 있다
+
+  const cards = B.branches.map(b=>{
+    const list = b.am_depts_with_rate || (b.pm_depts||[]).map(x=>({dept:x}));
+    return `<div class="br ${b.khu_possible?"yes":"no"}">
+      <div class="bh"><span class="bt">${b.korea_dept}</span>
+        <span class="bg">${b.khu_possible?`여유 ${b.gap_min}분`:`${b.gap_min}분 불가`}</span></div>
+      <div class="bs">${b.slot}</div>
+      <div class="brs">${b.khu_possible?"경희대 한의예과까지 <b>6장 전부</b> 사용 가능":"<b>경희대 포기</b> — 6번째 장은 서강대 2부로"}</div>
+      <div class="dl">${list.map(x=>`
+        <div class="${x.tier==="최상위"?"hl":""}">
+          <span>${x.dept}${x.note?" ⚠":""}</span>
+          <span class="q">${x.quota!=null?x.quota+"명":""}</span>
+          <span class="r">${x.rate!=null?x.rate.toFixed(1):(x.quota!=null?"미확인":"")}</span>
+        </div>`).join("")}</div>
+      ${list.some(x=>x.note)?`<div class="nt">⚠ ${list.find(x=>x.note).note}</div>`:""}
+    </div>`;
+  }).join("");
+
+  host.insertAdjacentHTML("beforeend", `
+    <div class="clash" style="background:var(--surface);border:1px solid var(--line);color:var(--text)">
+      <b style="color:var(--accent)">${B._headline.replace(/^★\s*/,"★ ")}</b>
+      ${B.rule}
+      <div class="branch">${cards}</div>
+      <div class="nt" style="margin-top:9px;font-size:11px;color:var(--text-2)">${B.note}</div>
+    </div>`);
+}
+
 function paint(){
   const g = loadGrades(), p = loadPct();
   const src = MODE==="grade" ? g : p;
@@ -1852,6 +1909,7 @@ renderInputs();
 renderActual();
 renderProbs();
 renderClash();
+renderBranch();
 renderCombos();
 renderDeptTable();
 renderSchedule();
