@@ -1,0 +1,1926 @@
+<meta charset="utf-8">
+<title>수시논술 작전판</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="수시논술">
+<meta name="theme-color" content="#141A2E">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+
+<style>
+:root{
+  --ink:#141A2E; --ink-2:#2A3350; --paper:#FAF8F4; --surface:#FFFFFF;
+  --line:#E2DED6; --line-2:#CFCABF;
+  --text:#171C2C; --text-2:#565E76; --text-3:#858B9C;
+  --accent:#C8452F; --accent-soft:#FBEDE9;
+  --ok:#2E7D5B; --ok-soft:#E7F2EC;
+  --warn:#9A6B08; --warn-soft:#FBF1DC;
+  --unknown:#6B7280; --unknown-soft:#EFEFF1;
+  /* 최상위 학과 표시 — 경고(accent)와 반드시 구분되어야 함 */
+  --tier1:#5B4B9E; --tier1-soft:#EEEBF7;
+  --shadow:0 1px 2px rgba(20,26,46,.06),0 4px 16px rgba(20,26,46,.05);
+  --r:12px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#E8E4DC; --ink-2:#B9BDCC; --paper:#0F131F; --surface:#171C2B;
+    --line:#293147; --line-2:#3A4460;
+    --text:#EDEAE3; --text-2:#A2A9BC; --text-3:#767E93;
+    --accent:#F0705A; --accent-soft:#3A1E19;
+    --ok:#5FBF92; --ok-soft:#16301F;
+    --warn:#E0AE4B; --warn-soft:#332711;
+    --unknown:#8A91A3; --unknown-soft:#232939;
+    --tier1:#A99BE0; --tier1-soft:#272141;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#E8E4DC; --ink-2:#B9BDCC; --paper:#0F131F; --surface:#171C2B;
+  --line:#293147; --line-2:#3A4460;
+  --text:#EDEAE3; --text-2:#A2A9BC; --text-3:#767E93;
+  --accent:#F0705A; --accent-soft:#3A1E19;
+  --ok:#5FBF92; --ok-soft:#16301F;
+  --warn:#E0AE4B; --warn-soft:#332711;
+  --unknown:#8A91A3; --unknown-soft:#232939;
+  --tier1:#A99BE0; --tier1-soft:#272141;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--text);
+  font-family:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+  font-size:15px; line-height:1.6;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 72px}
+h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans KR",sans-serif;text-wrap:balance;margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+/* ── header ─────────────────────────── */
+header{
+  background:var(--ink); color:var(--paper);
+  padding:calc(22px + env(safe-area-inset-top)) 0 20px;
+  margin-bottom:20px;
+  border-bottom:3px solid var(--accent);
+}
+header .wrap{padding-bottom:0}
+.brow{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent); font-weight:600; margin-bottom:6px;
+}
+header h1{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--paper)}
+header p{margin:8px 0 0;font-size:13px;color:var(--ink-2);line-height:1.5}
+
+/* ── profile bar ────────────────────── */
+.profile{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:12px 14px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.profile .lbl{font-size:12px;color:var(--text-2);font-weight:600}
+.chip{
+  font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;
+  background:var(--ok-soft);color:var(--ok);border:1px solid transparent;
+}
+.chip.n{background:var(--unknown-soft);color:var(--unknown)}
+
+/* ── prep checklist ─────────────────── */
+.prep{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;margin-bottom:18px;box-shadow:var(--shadow);
+}
+.phead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.phead h2{font-size:16px;font-weight:700}
+.applybtn{
+  margin-left:auto;font-size:12.5px;font-weight:600;text-decoration:none;
+  background:var(--accent);color:#fff;padding:6px 13px;border-radius:99px;
+  transition:.15s;white-space:nowrap;
+}
+.applybtn:hover{filter:brightness(1.08)}
+.applybtn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.psub{margin:0 0 13px;font-size:12.5px;color:var(--text-2);line-height:1.6}
+.psub b{color:var(--text)}
+.plist{margin:0;padding:0;list-style:none;counter-reset:p;display:grid;gap:9px}
+.plist li{
+  counter-increment:p;position:relative;padding-left:27px;
+  font-size:13px;line-height:1.55;
+}
+.plist li::before{
+  content:counter(p);position:absolute;left:0;top:1px;
+  width:19px;height:19px;border-radius:50%;
+  background:var(--ink);color:var(--paper);
+  font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+  display:grid;place-items:center;
+}
+.plist b{display:block;font-size:13px;font-weight:700;margin-bottom:1px}
+.plist span{display:block;font-size:12.5px;color:var(--text-2)}
+.hl{color:var(--accent);font-weight:700}
+.pwarn{
+  margin-top:13px;padding:10px 12px;border-radius:8px;
+  background:var(--accent-soft);color:var(--accent);font-size:12.5px;line-height:1.55;
+}
+.pwarn > b:first-child{display:block;margin-bottom:2px}
+
+/* ── grade input ────────────────────── */
+.gradebtn{
+  margin-left:auto;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
+  padding:5px 12px;border-radius:99px;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);transition:.15s;
+}
+.gradebtn:hover{filter:brightness(1.15)}
+.gradebtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gradebtn.has{background:var(--ok);border-color:var(--ok);color:#fff}
+.grades{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:15px 16px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.ghead{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.ghead h2{font-size:15px;font-weight:700}
+.clearbtn{
+  margin-left:auto;font:inherit;font-size:12px;font-weight:600;cursor:pointer;
+  background:none;border:1px solid var(--line-2);color:var(--text-2);
+  padding:4px 10px;border-radius:99px;
+}
+.clearbtn:hover{border-color:var(--accent);color:var(--accent)}
+.clearbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gnote{
+  margin:0 0 12px;font-size:12px;line-height:1.55;color:var(--text-2);
+  background:var(--ok-soft);color:var(--ok);padding:8px 11px;border-radius:7px;
+}
+.gnote b{display:block}
+.ginputs{display:grid;grid-template-columns:repeat(6,1fr);gap:7px}
+@media(max-width:560px){.ginputs{grid-template-columns:repeat(3,1fr)}}
+.gfield{display:flex;flex-direction:column;gap:3px}
+.gfield span{font-size:11px;font-weight:600;color:var(--text-2);text-align:center}
+.gfield input{
+  font:inherit;font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;
+  text-align:center;padding:8px 4px;border-radius:8px;
+  border:1px solid var(--line-2);background:var(--paper);color:var(--text);
+  -moz-appearance:textfield;
+}
+.gfield input::-webkit-outer-spin-button,
+.gfield input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.gfield input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.gtip{margin:10px 0 0;font-size:11.5px;color:var(--text-3);line-height:1.5}
+
+/* verdict badge */
+.verdict{
+  font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap;
+}
+.verdict:empty{display:none}
+.v-ok{background:var(--ok-soft);color:var(--ok)}
+.v-no{background:var(--accent-soft);color:var(--accent)}
+.v-na{background:var(--ok-soft);color:var(--ok)}
+.v-unk{background:var(--unknown-soft);color:var(--unknown)}
+
+.judgeline{
+  font-size:12.5px;line-height:1.5;padding:9px 11px;border-radius:7px;margin-top:13px;
+}
+.judgeline b{display:block;margin-bottom:1px}
+.j-ok{background:var(--ok-soft);color:var(--ok)}
+.j-no{background:var(--accent-soft);color:var(--accent)}
+.j-na{background:var(--ok-soft);color:var(--ok)}
+.j-unk{background:var(--unknown-soft);color:var(--unknown)}
+
+/* ── strategy ───────────────────────── */
+.gtabs{display:flex;gap:5px;margin-bottom:11px}
+.gtab{
+  font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
+  padding:5px 14px;border-radius:99px;
+  background:var(--paper);color:var(--text-2);border:1px solid var(--line-2);
+}
+.gtab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.gtab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.shead{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:18px 0 10px;
+  padding-top:15px;border-top:1px solid var(--line)}
+.shead h3{font-size:15px;font-weight:700}
+.pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px;
+  background:var(--unknown-soft);color:var(--unknown)}
+.pill.g{background:var(--ok-soft);color:var(--ok)}
+.pill.w{background:var(--accent-soft);color:var(--accent)}
+
+.sblock{font-size:12.5px;line-height:1.6;padding:10px 12px;border-radius:8px;
+  background:var(--paper);color:var(--text-2);margin-bottom:11px;border:1px solid var(--line)}
+.sblock b{color:var(--text)}
+.sblock > b:first-child{display:block;margin-bottom:2px}
+.sblock.w{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.sblock.w b{color:var(--accent)}
+
+.scards{display:grid;gap:9px;margin-bottom:11px}
+.scard{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:var(--paper)}
+.sc-h{display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.sc-h b{font-size:13.5px;font-weight:700}
+.sc-d{font-size:11.5px;color:var(--text-2);font-family:"IBM Plex Mono",monospace;margin-bottom:8px}
+.sc-p{display:flex;flex-wrap:wrap;gap:5px}
+.pk{font-size:12px;padding:4px 9px;border-radius:7px;background:var(--surface);
+  border:1px solid var(--line);color:var(--text);line-height:1.35}
+.pk i{font-style:normal;color:var(--text-3);font-size:11px;margin-left:3px}
+.pk em{font-style:normal;font-size:10px;font-weight:700;margin-left:5px;
+  padding:1px 5px;border-radius:4px;background:var(--unknown-soft);color:var(--unknown)}
+.pk.t1 em{background:var(--tier1-soft);color:var(--tier1)}
+.pk.t2 em{background:var(--warn-soft);color:var(--warn)}
+.pk.t3 em{background:var(--ok-soft);color:var(--ok)}
+.pk u{display:block;text-decoration:none;font-size:10px;color:var(--text-3);margin-top:1px}
+.sc-n{margin-top:7px;font-size:11.5px;color:var(--warn);line-height:1.45}
+
+/* ── filters ────────────────────────── */
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.fbtn{
+  font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
+  padding:6px 12px;border-radius:99px;
+  background:var(--surface);color:var(--text-2);
+  border:1px solid var(--line-2);transition:.15s;
+}
+.fbtn:hover{border-color:var(--text-3);color:var(--text)}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ── legend ─────────────────────────── */
+.legend{
+  display:flex;flex-wrap:wrap;gap:6px 14px;margin:-4px 0 14px;
+  font-size:11.5px;color:var(--text-2);
+}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sw{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+.sw.ok{background:var(--ok)} .sw.no{background:var(--accent)}
+.sw.t1{background:var(--tier1)} .sw.un{background:var(--unknown)}
+
+/* ── university card ────────────────── */
+.uni{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden;
+}
+.uni.hidden{display:none}
+.uhead{
+  display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding:14px 16px 12px;border-bottom:1px solid var(--line);
+  cursor:pointer;user-select:none;
+}
+.uhead:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.uhead h2{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.utype{font-size:12px;color:var(--text-3);font-weight:500}
+.caret{margin-left:auto;color:var(--text-3);font-size:13px;transition:transform .2s}
+.uni[data-open="true"] .caret{transform:rotate(180deg)}
+
+.flag{
+  font-size:12.5px;line-height:1.5;padding:9px 16px;
+  border-bottom:1px solid var(--line);font-weight:500;
+}
+.flag.good{background:var(--ok-soft);color:var(--ok)}
+.flag.bad{background:var(--warn-soft);color:var(--warn)}
+
+/* 4 fixed metric slots — same position on every card so eyes compare vertically */
+.slots{display:grid;grid-template-columns:repeat(4,1fr)}
+.slot{padding:11px 14px;border-right:1px solid var(--line)}
+.slot:last-child{border-right:0}
+.slot .k{
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--text-3);font-weight:600;margin-bottom:4px;
+}
+.slot .v{font-size:13px;font-weight:600;line-height:1.35}
+.slot .v small{display:block;font-size:11px;font-weight:500;color:var(--text-2);margin-top:2px}
+.v.ok{color:var(--ok)} .v.warn{color:var(--warn)} .v.unk{color:var(--unknown)}
+
+@media(max-width:640px){
+  .slots{grid-template-columns:repeat(2,1fr)}
+  .slot{border-bottom:1px solid var(--line)}
+  .slot:nth-child(2n){border-right:0}
+  .slot:nth-child(n+3){border-bottom:0}
+}
+
+/* ── detail ─────────────────────────── */
+.detail{padding:0 16px 16px;border-top:1px solid var(--line)}
+.uni:not([data-open="true"]) .detail{display:none}
+.sec{margin-top:14px}
+.sec h3{
+  font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--text-3);font-weight:600;margin-bottom:7px;
+}
+.raw{
+  font-size:12.5px;color:var(--text-2);background:var(--paper);
+  border-left:2px solid var(--line-2);padding:8px 11px;border-radius:0 6px 6px 0;
+}
+.slotgrp{margin-bottom:9px}
+.slotgrp .t{font-size:12.5px;font-weight:700;color:var(--accent);margin-bottom:3px}
+.deps{display:flex;flex-wrap:wrap;gap:5px}
+.dep{
+  font-size:12px;padding:3px 8px;border-radius:6px;
+  background:var(--paper);border:1px solid var(--line);color:var(--text-2);
+}
+.dep.top{border-color:var(--tier1);color:var(--tier1);font-weight:600}
+.dep.no{text-decoration:line-through;opacity:.5}
+
+/* ── actual results table ───────────── */
+.actual{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;margin-bottom:20px;box-shadow:var(--shadow);
+}
+.actual:empty{display:none}
+.ahead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px}
+.ahead h2{font-size:16px;font-weight:700}
+.asub{margin:0 0 13px;font-size:12.5px;color:var(--text-2);line-height:1.55}
+.asub b{color:var(--text)}
+.atable{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.atable table{border-collapse:collapse;width:100%;min-width:400px}
+.atable th{
+  font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--text-3);
+  font-weight:600;text-align:right;padding:0 8px 7px;border-bottom:1px solid var(--line-2);
+  white-space:nowrap;
+}
+.atable th:first-child{text-align:left}
+.atable th small{display:block;font-size:9px;font-weight:500;text-transform:none;letter-spacing:0}
+.atable td{
+  padding:7px 8px;border-bottom:1px solid var(--line);font-size:12.5px;
+}
+.atable tr:last-child td{border-bottom:0}
+.atable .dn{font-weight:600;line-height:1.3}
+.atable .dn small{display:block;font-size:10px;font-weight:500;color:var(--text-3)}
+.atable .num{
+  text-align:right;font-family:"IBM Plex Mono",monospace;
+  font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap;
+}
+.atable .dim{color:var(--text-3);font-weight:500}
+.atable .low{color:var(--ok)}
+.atable .hi{color:var(--accent)}
+.anote{
+  margin-top:13px;padding:10px 12px;border-radius:8px;
+  background:var(--paper);border:1px solid var(--line);
+  font-size:12.5px;line-height:1.6;color:var(--text-2);
+}
+.anote > b:first-child{display:block;margin-bottom:3px;color:var(--text)}
+.anote b.i{color:var(--accent);font-weight:700}
+
+.probs{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;margin-bottom:20px;box-shadow:var(--shadow);
+}
+.probs:empty{display:none}
+.plist2{display:grid;gap:6px}
+.prow{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:8px 11px;border-radius:8px;background:var(--paper);
+  border:1px solid var(--line);font-size:12.5px;
+}
+.prow.on{border-color:var(--ok);background:var(--ok-soft)}
+.prow b{font-weight:700;min-width:62px}
+.prow.on b{color:var(--ok)}
+.pyear{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--text-2)}
+.pcnt{font-size:11px;font-weight:700;padding:1px 7px;border-radius:99px;
+  background:var(--ok);color:#fff}
+.prow em{font-style:normal;font-size:11px;color:var(--text-3)}
+.pno{font-size:11.5px;color:var(--text-3)}
+.prow a{margin-left:auto;font-size:11.5px;font-weight:600;color:var(--accent);
+  text-decoration:none;white-space:nowrap}
+.prow a:hover{text-decoration:underline}
+.anote code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  background:var(--unknown-soft);padding:1px 5px;border-radius:4px}
+
+/* ── timeline ───────────────────────── */
+.tl{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;margin-bottom:20px;box-shadow:var(--shadow);
+}
+.tl h2{font-size:16px;font-weight:700;margin-bottom:3px}
+.tl .sub{font-size:12.5px;color:var(--text-2);margin-bottom:14px}
+.row{display:flex;gap:11px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.date{
+  flex:0 0 62px;font-size:12px;font-weight:600;color:var(--text);
+  font-family:"IBM Plex Mono",monospace;padding-top:1px;
+}
+.date small{display:block;font-size:10px;color:var(--text-3);font-weight:500}
+.ev{flex:1;min-width:0}
+.ev .n{font-size:13.5px;font-weight:600}
+.ev .d{font-size:12px;color:var(--text-2);margin-top:2px}
+.dd{
+  flex:0 0 auto;font-size:11px;font-weight:700;padding:2px 7px;border-radius:99px;
+  background:var(--accent-soft);color:var(--accent);
+  font-family:"IBM Plex Mono",monospace;align-self:flex-start;
+}
+.dd.far{background:var(--unknown-soft);color:var(--unknown)}
+.clash{
+  margin-top:12px;padding:10px 12px;border-radius:8px;
+  background:var(--warn-soft);color:var(--warn);font-size:12.5px;line-height:1.5;
+}
+.clash b{display:block;margin-bottom:2px}
+
+
+/* ── 11/21 충돌 타임라인 ─────────────────── */
+.clash{
+  margin-top:12px;padding:12px 14px;border-radius:8px;
+  background:var(--warn-soft);color:var(--warn);font-size:12.5px;line-height:1.55;
+}
+.clash b{display:block;margin-bottom:4px}
+.clash.bad{background:var(--accent-soft);color:var(--accent)}
+.gantt{margin-top:10px;display:grid;gap:5px}
+.grow{display:grid;grid-template-columns:82px 1fr;gap:8px;align-items:center}
+.gname{font-size:11.5px;font-weight:700;color:var(--text-2);text-align:right}
+.gbar{position:relative;height:22px;background:var(--paper);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.gseg{
+  position:absolute;top:0;bottom:0;border-radius:4px;
+  font-size:10px;font-weight:700;color:#fff;
+  display:flex;align-items:center;justify-content:center;white-space:nowrap;
+  font-family:"IBM Plex Mono",monospace;
+}
+.gseg.pick{background:var(--ok)}
+.gseg.alt{background:var(--unknown);opacity:.5}
+.gseg.no{background:var(--accent)}
+.gaxis{display:grid;grid-template-columns:82px 1fr;gap:8px;margin-top:2px}
+.gaxis div:last-child{
+  display:flex;justify-content:space-between;font-size:9.5px;
+  color:var(--text-3);font-family:"IBM Plex Mono",monospace;
+}
+
+/* ── 조합 플래너 ─────────────────────────── */
+.combos{margin-top:26px}
+.combos h2{font-size:17px;font-weight:800;letter-spacing:-.01em}
+.combos .sub{font-size:12.5px;color:var(--text-2);margin:4px 0 12px;line-height:1.55}
+.cbox{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px;box-shadow:var(--shadow);margin-bottom:10px;
+}
+.cbox.best{border-color:var(--ok);border-width:2px}
+.ctag{
+  display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:99px;
+  background:var(--ok-soft);color:var(--ok);margin-bottom:8px;
+}
+.cunis{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.cuni{
+  font-size:12px;font-weight:600;padding:3px 9px;border-radius:6px;
+  background:var(--paper);border:1px solid var(--line-2);color:var(--text)
+}
+.cuni.fixed{background:var(--tier1-soft);color:var(--tier1);border-color:transparent}
+.cday{
+  display:grid;grid-template-columns:74px 1fr;gap:8px;
+  font-size:12px;padding:5px 0;border-top:1px dashed var(--line);
+}
+.cday .d{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--text-2);font-size:11px}
+.cday .v{color:var(--text)}
+.cday .v i{color:var(--text-3);font-style:normal;font-size:11px}
+.crule{
+  margin-top:12px;font-size:11.5px;color:var(--text-2);line-height:1.6;
+  background:var(--paper);border-radius:8px;padding:10px 12px;
+}
+.crule b{color:var(--accent)}
+
+
+/* ── 학과 비교표 ─────────────────────────── */
+.deptbl{margin-top:26px}
+.deptbl h2{font-size:17px;font-weight:800;letter-spacing:-.01em}
+.deptbl .sub{font-size:12.5px;color:var(--text-2);margin:4px 0 12px;line-height:1.55}
+.dtwrap{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);overflow-x:auto;
+}
+table.dt{border-collapse:collapse;width:100%;min-width:640px;font-size:12.5px}
+table.dt th,table.dt td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line)}
+table.dt thead th{
+  background:var(--paper);font-size:11px;font-weight:700;color:var(--text-2);
+  position:sticky;top:0;white-space:nowrap;
+}
+table.dt td.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+table.dt tbody tr:hover{background:var(--paper)}
+table.dt .uni-cell{font-weight:700;white-space:nowrap}
+table.dt .t1{color:var(--tier1);font-weight:700}
+.dim{color:var(--text-3)}
+.src{font-size:9.5px;padding:1px 5px;border-radius:99px;background:var(--unknown-soft);color:var(--unknown);font-weight:700}
+.src.off{background:var(--ok-soft);color:var(--ok)}
+.dtfilter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.dtfilter button{
+  font:inherit;font-size:12px;font-weight:600;padding:5px 11px;border-radius:99px;
+  border:1px solid var(--line-2);background:var(--surface);color:var(--text-2);cursor:pointer;
+}
+.dtfilter button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+
+/* ── 전형별 일정표 ───────────────────────── */
+.schtbl{margin-top:26px}
+.schtbl h2{font-size:17px;font-weight:800;letter-spacing:-.01em}
+.schtbl .sub{font-size:12.5px;color:var(--text-2);margin:4px 0 12px;line-height:1.55}
+table.st{border-collapse:collapse;width:100%;min-width:760px;font-size:12px}
+table.st th,table.st td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.st thead th{background:var(--paper);font-size:10.5px;font-weight:700;color:var(--text-2);white-space:nowrap}
+table.st td.u{font-weight:700;white-space:nowrap}
+table.st .dt{font-family:"IBM Plex Mono",monospace;font-weight:600;font-variant-numeric:tabular-nums}
+table.st .tm{font-family:"IBM Plex Mono",monospace;color:var(--text-2);font-size:11px;display:block}
+table.st tbody tr:hover{background:var(--paper)}
+table.st tr.hot td{background:var(--warn-soft)}
+table.st .venue{font-size:11px;color:var(--text-2);line-height:1.45}
+table.st .venue b{color:var(--accent);font-weight:700}
+
+
+/* ── 전략 요약 ───────────────────────────── */
+.brief{
+  margin-top:22px;background:var(--ink);color:var(--paper);
+  border-radius:var(--r);padding:18px 18px 16px;box-shadow:var(--shadow);
+}
+.brief h2{font-size:17px;font-weight:800;color:var(--paper);letter-spacing:-.01em}
+.brief .lead{font-size:13px;color:var(--ink-2);margin:6px 0 14px;line-height:1.6}
+.brief .lead b{color:var(--paper)}
+.bgrid{display:grid;gap:9px}
+@media(min-width:640px){.bgrid{grid-template-columns:1fr 1fr}}
+.bcell{background:rgba(255,255,255,.06);border-radius:9px;padding:12px 13px}
+.bcell .k{
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:5px;
+}
+.bcell .v{font-size:12.5px;line-height:1.6;color:var(--paper)}
+.bcell .v b{color:#FFD9A0}
+.bcell.warn{background:rgba(240,112,90,.14)}
+.bcell.warn .k{color:#FFB3A3}
+
+.dep b{font-weight:700;font-variant-numeric:tabular-nums;opacity:.85;margin-left:1px}
+.dep b:after{content:"명";font-size:.85em;font-weight:600;opacity:.7;margin-left:1px}
+.dep.dim{opacity:.45}
+
+
+/* ── 잠정 선택 · 미결 쟁점 ───────────────── */
+.pick{margin-top:26px}
+.pick h2{font-size:17px;font-weight:800;letter-spacing:-.01em}
+.pick .sub{font-size:12.5px;color:var(--text-2);margin:4px 0 12px;line-height:1.55}
+.issue{
+  background:var(--accent-soft);border:2px solid var(--accent);border-radius:var(--r);
+  padding:14px;margin-bottom:14px;
+}
+.issue .tag{
+  display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;
+  padding:2px 8px;border-radius:99px;background:var(--accent);color:#fff;margin-bottom:7px;
+}
+.issue h3{font-size:14px;font-weight:800;color:var(--accent);margin:0 0 6px}
+.issue p{margin:0 0 9px;font-size:12.5px;line-height:1.6;color:var(--text)}
+.issue .facts{display:grid;gap:4px;margin-bottom:9px}
+.issue .facts div{font-size:11.5px;line-height:1.5;padding-left:15px;position:relative;color:var(--text-2)}
+.issue .facts div:before{position:absolute;left:0;font-weight:700}
+.issue .facts div.ok:before{content:"✓";color:var(--ok)}
+.issue .facts div.no:before{content:"?";color:var(--warn)}
+.issue .todo{
+  background:var(--surface);border-radius:8px;padding:10px 12px;
+  font-size:11.5px;line-height:1.6;color:var(--text);
+}
+.issue .todo b{display:block;margin-bottom:3px;color:var(--accent)}
+.fixed5{display:grid;gap:7px;margin-bottom:14px}
+.frow{
+  display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;
+  background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  padding:10px 12px;box-shadow:var(--shadow);
+}
+.frow .nm{font-size:13px;font-weight:700}
+.frow .nm small{display:block;font-weight:500;font-size:11px;color:var(--text-2);margin-top:2px;line-height:1.45}
+.frow .mt{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:11.5px;white-space:nowrap}
+.frow .mt b{display:block;font-size:14px}
+.frow .mt span{color:var(--text-3);font-size:10.5px}
+.opts{display:grid;gap:9px}
+@media(min-width:700px){.opts{grid-template-columns:repeat(3,1fr)}}
+.opt{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:13px;box-shadow:var(--shadow);
+}
+.opt.rec{border-color:var(--ok);border-width:2px}
+.opt .oh{display:flex;gap:6px;align-items:center;margin-bottom:7px;flex-wrap:wrap}
+.opt .ol{
+  font-size:11px;font-weight:800;width:20px;height:20px;border-radius:5px;
+  display:grid;place-items:center;background:var(--ink);color:var(--paper);flex:0 0 auto;
+}
+.opt.rec .ol{background:var(--ok)}
+.opt h4{font-size:12.5px;font-weight:700;margin:0;line-height:1.35}
+.opt .st{font-size:10.5px;font-weight:700;padding:1px 7px;border-radius:99px}
+.opt .st.ok{background:var(--ok-soft);color:var(--ok)}
+.opt .st.no{background:var(--accent-soft);color:var(--accent)}
+.opt .body{font-size:11.5px;line-height:1.6;color:var(--text-2)}
+.opt .body b{color:var(--text)}
+.opt .cand{margin-top:8px;display:grid;gap:3px}
+.opt .cand div{
+  font-size:11px;display:grid;grid-template-columns:1fr auto;gap:6px;
+  padding:4px 7px;border-radius:6px;background:var(--paper);
+}
+.opt .cand div.p{background:var(--ok-soft);font-weight:600}
+.opt .cand .r{font-family:"IBM Plex Mono",monospace;color:var(--text-2)}
+
+/* ── footnote ───────────────────────── */
+.note{
+  font-size:12px;color:var(--text-3);line-height:1.6;
+  border-top:1px solid var(--line);padding-top:14px;margin-top:22px;
+}
+.note b{color:var(--text-2)}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="brow">2027학년도 · 자연계열 논술</div>
+    <h1>수시논술 작전판</h1>
+    <p>7개 전형 · 모집요강 원문 대조본 — 이 중 6장 선택 (경희대 한의예과 확정)</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="profile">
+    <span class="lbl">내 준비범위</span>
+    <span class="chip">미적분</span>
+    <span class="chip">기하</span>
+    <span class="chip">확률과통계</span>
+    <button class="gradebtn" id="gradeToggle" aria-expanded="false">
+      <span id="gradeSummary">성적 입력하기</span>
+    </button>
+  </div>
+
+  <section class="grades" id="gradePanel" hidden>
+    <div class="ghead">
+      <h2>모의고사 등급 입력</h2>
+      <button class="clearbtn" id="clearGrades">지우기</button>
+    </div>
+    <p class="gnote">
+      <b>입력값은 이 기기의 브라우저에만 저장됩니다.</b>
+      서버로 전송되지 않고, 같은 주소를 다른 사람이 열어도 보이지 않습니다.
+      지우려면 위 ‘지우기’를 누르세요.
+    </p>
+    <div class="gtabs" role="tablist">
+      <button class="gtab" role="tab" data-m="grade" aria-selected="true">등급</button>
+      <button class="gtab" role="tab" data-m="pct" aria-selected="false">백분위</button>
+    </div>
+    <div class="ginputs" id="ginputs"></div>
+    <p class="gtip" id="gtip"></p>
+    <div id="strategy"></div>
+  </section>
+
+  <section class="prep">
+    <div class="phead">
+      <h2>접수 전 준비물</h2>
+      <a class="applybtn" href="https://www.jinhakapply.com/" target="_blank" rel="noopener">진학어플라이 열기 ↗</a>
+    </div>
+    <p class="psub">
+      6개 대학 <b>전부 진학어플라이 한 곳</b>에서 접수됩니다. 공통원서를 한 번 쓰면 6개 대학에 재사용되므로
+      인적사항을 다시 칠 필요가 없습니다. 서류는 전 대학 <b>온라인 업로드만</b> 인정 — 우편·방문 제출은 안 됩니다.
+    </p>
+    <ol class="plist">
+      <li>
+        <b>증명사진</b>
+        <span>최근 3개월 이내 촬영. <b class="hl">고려대는 24KB 이하</b> 규격이 요강에 명시돼 있어 가장 빡빡합니다. 이 기준에 맞춰 준비하면 나머지도 통과.</span>
+      </li>
+      <li>
+        <b>본인인증 수단</b>
+        <span>휴대폰 본인인증 · 간편인증 · 공동인증서 중 하나. 미리 한 번 로그인해 두세요.</span>
+      </li>
+      <li>
+        <b>학생부 온라인 제공 동의</b>
+        <span>원서접수 때 동의하면 학생부를 따로 업로드하지 않아도 됩니다. 동의하지 않으면 PDF로 직접 올려야 하니 동의가 편합니다.</span>
+      </li>
+      <li>
+        <b>결제수단</b>
+        <span>카드 권장. <b class="hl">가상계좌는 은행 이체 마감 시각이 따로</b>라 마감일에 쓰면 위험합니다.</span>
+      </li>
+      <li>
+        <b>여유 있는 접수 — 가장 중요</b>
+        <span>마감 직전은 접속이 몰립니다. 중앙대는 <b class="hl">"지정 대행사 서버 시간 기준"</b> 마감이라 내 시계로 맞춰도 늦을 수 있습니다. <b>결제 완료까지</b>가 접수 완료입니다.</span>
+      </li>
+    </ol>
+    <div class="pwarn">
+      <b>마감 시각이 대학마다 다릅니다</b>
+      연세·고려 <b>9/9(수) 17:00</b> · 나머지 4곳 <b>9/11(금) 18:00</b>.
+      연세대·고려대가 이틀 먼저 닫히니 이 둘부터 처리하세요.
+    </div>
+  </section>
+
+  <div class="filters" id="filters">
+    <button class="fbtn" aria-pressed="false" data-f="nomin">수능최저 없음</button>
+    <button class="fbtn" aria-pressed="false" data-f="only">논술 100%</button>
+    <button class="fbtn" aria-pressed="false" data-f="oct">10월 시험</button>
+    <button class="fbtn" aria-pressed="false" data-f="easy">최저 완화(합7)</button>
+    <button class="fbtn" aria-pressed="false" data-f="sci">과학 포함</button>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw ok"></i>충족 · 최저 없음</span>
+    <span><i class="sw no"></i>미충족 — 지원해도 불합격</span>
+    <span><i class="sw t1"></i>최상위 학과 — 경쟁 밀집</span>
+    <span><i class="sw un"></i>성적 미입력</span>
+  </div>
+
+  <div id="cards"></div>
+
+  <div class="tl">
+    <h2>일정과 충돌</h2>
+    <div class="sub">논술고사가 같은 날이면 하나만 응시할 수 있습니다.</div>
+    <div id="timeline"></div>
+    <div id="clash"></div>
+  </div>
+
+  <section class="pick" id="pick"></section>
+
+  <section class="brief" id="brief"></section>
+
+  <section class="schtbl" id="schtbl"></section>
+
+  <section class="deptbl" id="deptbl"></section>
+
+  <section class="combos" id="combos"></section>
+
+  <section class="actual" id="actual"></section>
+  <section class="probs" id="probs"></section>
+
+  <div class="note">
+    <b>출처</b> — 각 대학 홈페이지 배포 2027학년도 수시 모집요강 PDF 원문 대조 (2026-09-01 기준).
+    수학 출제범위·수능최저·반영비율·고사일시는 원문 확인 완료.
+    <b style="color:var(--warn)">일부 원서접수 시각과 중앙대 고사일은 미확인</b>이며 카드에 표시했습니다.<br>
+    모집요강은 정정공고가 날 수 있습니다. 원서 접수 전 반드시 각 대학 입학처 공고로 최종 확인하세요.
+  </div>
+</div>
+
+<script src="data.js" charset="utf-8"></script>
+<script>
+const U = [
+  {
+    id:"yonsei", name:"연세대(서울)", type:"논술전형", quota:288,
+    flag:{k:"good", t:"수능최저 없음 + 10/10 단독 시험 → 나머지 5개와 일정 충돌 없음"},
+    math:{v:"전 범위", s:"미적·기하·확통 + 통합과학", cls:""},
+    min:{v:"없음", s:"미적용", cls:"ok"},
+    w:{v:"논술 100%", s:"", cls:""},
+    exam:{v:"10/10 (토)", s:"10:30~12:30 · 120분", cls:""},
+    tags:["nomin","only","oct","sci"],
+    raw:[
+      ["출제범위","수학, 수학Ⅰ, 수학Ⅱ, 미적분, 확률과 통계, 기하, 실용 수학, 경제 수학, 수학과제 탐구 / 과학: <b>통합과학</b> — 수학 80점 + 과학 20점 (p.49)"],
+      ["과학 범위 확인","2027은 <b>통합과학</b>만 출제(고1 공통과목). 과거의 '물리·화학·생명·지구 중 택1'이 아니므로 과탐 Ⅰ·Ⅱ 심화 대비 불필요"],
+      ["수능최저","적용하지 않음 (p.49)"],
+      ["주의","자연·통합계열은 수학 점수가 100점 만점 기준 20점 미만이면 불합격 처리(과락)"],
+      ["경쟁률 2026","논술전형 전체 48.72:1 (335명 모집 / 16,322명 지원). <b>수능최저가 없어 명목 = 실질 경쟁률</b>"],
+      ["기출","입학처 자료실 — 선행학습 영향평가 보고서. 문항별 '문항카드'로 출제의도·해설까지 수록(6개 중 가장 충실)"]
+    ],
+    groups:[{t:"10/10(토) 10:30~12:30 · 전 모집단위 동일", deps:[
+      ["전기전자공학부 20",1],["시스템반도체공학과 12",1],["컴퓨터과학과 6",1],["기계공학부 18",0],
+      ["화공생명공학부 12",0],["신소재공학부 13",0],["사회환경시스템공학부 10",0],["생명공학과 8",0],
+      ["건축공학과 7",0],["수학과 7",0],["물리학과 7",0],["인공지능학과 5",0],["약학과 5",0],
+      ["인공지능시스템학과 4",0],["IT융합공학전공 4",0],["산업공학과 4",0],["화학과 4",0],
+      ["지구시스템과학과 4",0],["천문우주학과 4",0],["디스플레이융합공학과 4",0],["대기과학과 3",0],
+      ["도시공학과 3",0],["지능형반도체전공 3",0],["모빌리티시스템전공 3",0],["시스템생물학과 3",0],
+      ["생화학과 2",0],["진리자유학부(자연) 12",0],["응용통계학과 2",0]
+    ]}]
+  },
+  {
+    id:"korea", name:"고려대(서울)", type:"논술전형",
+    flag:{k:"bad", t:"수능최저가 6개 중 가장 까다로움 — 유일하게 4개 영역 합 8 (3개 아님)"},
+    math:{v:"전 범위", s:"미적·기하·확통", cls:""},
+    min:{v:"4개 합 8", s:"+ 한국사 4등급", cls:"warn"},
+    w:{v:"논술 100%", s:"⚠️ 재확인", cls:""},
+    exam:{v:"11/21 (토)", s:"오전·오후 2개조 · 80분", cls:""},
+    tags:["only"],
+    raw:[
+      ["출제범위","자연 수학논술: 수학Ⅰ, 수학Ⅱ, 미적분, 확률과 통계, 기하 (p.23) — 과학논술 없음"],
+      ["수능최저","국어·수학·영어·탐구 4개 영역 등급의 합이 8 이내 및 한국사 4등급 이내. 탐구는 사탐/과탐 중 1개 과목 반영 (p.6)"],
+      ["원서접수","2026.09.07(월) 10:00 ~ 09.09(수) 17:00 / 서류 온라인 09.09(수) 18:00 (p.7)"]
+    ],
+    groups:[
+      {t:"오전 — 08:30 입실완료", deps:[
+        ["컴퓨터학과",1],["인공지능학과",1],["데이터과학과",0],["스마트보안학부",0],["수학과",0],
+        ["물리학과",0],["화학과",0],["지구환경과학과",0],["생명과학부",0],["생명공학부",0],
+        ["식품공학과",0],["환경생태공학부",0],["바이오시스템의과학부",0],["바이오의공학부",0],["보건환경융합과학부",0]
+      ]},
+      {t:"오후 — 12:30 입실완료", deps:[
+        ["전기전자공학부",1],["기계공학부",0],["화공생명공학과",0],["신소재공학부",0],
+        ["건축사회환경공학부",0],["건축학과",0],["산업경영공학부",0],["융합에너지공학과",0],["학부대학",0]
+      ]}
+    ]
+  },
+  {
+    id:"sogang", name:"서강대", type:"논술(일반)", quota:171,
+    flag:{k:"good", t:"저녁 시험(16:00·19:00) — 같은 날 고려대 오전조와 병행 가능성"},
+    math:{v:"전 범위", s:"미적·기하·확통", cls:""},
+    min:{v:"3개 합 7", s:"+ 한국사 4등급", cls:""},
+    w:{v:"논술 100%", s:"", cls:""},
+    exam:{v:"11/21 (토)", s:"16:00 / 19:00 · 100분", cls:""},
+    tags:["only","easy"],
+    raw:[
+      ["출제범위","수학 교과 — 공통: 수학 / 선택: 수학Ⅰ, 수학Ⅱ, 미적분, 확률과 통계, 기하 (p.31)"],
+      ["수능최저","국어·수학·영어·탐구(1과목) 4개 중 3개 영역 등급 합 7 이내이고 한국사 4등급 이내. 선택과목 간 구분 없음 (p.30)"],
+      ["배점","문제1 40% + 문제2 60%. 분량 제한 없음(문제당 1쪽 이내). 동점자는 2번 문항 우수자"]
+    ],
+    groups:[
+      {t:"1부 16:00~17:40 — 15:30 입실", deps:[["전자공학과 12",1],["기계공학과 10",0],["수학과 6",0],["인공지능학과 3",1]]},
+      {t:"2부 19:00~20:40 — 18:30 입실", deps:[["컴퓨터공학과 12",1],["화공생명공학과 12",0],["물리학과 6",0],["시스템반도체공학과 3",0]]}
+    ]
+  },
+  {
+    id:"skku", name:"성균관대", type:"논술우수(수리형)",
+    flag:{k:"bad", t:"출제범위가 수학·수학Ⅰ·수학Ⅱ 뿐 — 미적분·기하·확통 전부 제외. 별도 대비 필요"},
+    math:{v:"수Ⅰ·수Ⅱ만", s:"선택과목 없음", cls:"warn"},
+    min:{v:"3개 합 5~6", s:"학과별 상이", cls:"warn"},
+    w:{v:"논술 100%", s:"", cls:""},
+    exam:{v:"11/22 (일)", s:"3개 교시 · 100분", cls:""},
+    tags:["only"],
+    raw:[
+      ["출제범위","시험내용: 수학, 수학Ⅰ, 수학Ⅱ — 3문제 (p.46). 6개 대학 중 유일하게 선택과목 미출제"],
+      ["수능최저","합 6: 자연과학계열·공학계열·건설환경공학부·글로벌AI융합학부 / 합 5: 전자전기정보공학부·반도체시스템·컴퓨터공학·인공지능·에너지·지능형SW·반도체융합·글로벌바이오메디컬·자유전공 (p.45)"],
+      ["탐구 반영","탐구 2과목 평균. 과탐 1과목 이상 응시자는 '2과목 평균등급'과 '과탐 상위 1과목 등급' 중 우수한 쪽 반영"],
+      ["참고","논술 언어형과 수리형은 별개 전형으로 중복지원 가능 (자연계는 수리형)"]
+    ],
+    groups:[
+      {t:"1교시 08:30~10:10 — 최저 합 5 그룹 다수", deps:[
+        ["전자전기정보공학부",1],["반도체시스템공학과 10",1],["컴퓨터공학과",1],["인공지능학과 5",1],
+        ["지능형소프트웨어학과 5",0],["반도체융합공학과 5",0],["에너지학과 5",0],
+        ["글로벌바이오메디컬공학과",0],["건설환경공학부",0],["글로벌AI융합학부",0]
+      ]},
+      {t:"2교시 13:00~14:40 — 최저 합 6", deps:[["공학계열",1],["자연과학계열",0]]},
+      {t:"3교시 17:00~18:40", deps:[["자유전공계열 20",0],["약학과",0]]}
+    ]
+  },
+  {
+    id:"hanyang", name:"한양대(서울)", type:"논술", quota:233,
+    flag:{k:"bad", t:"공대 7개 학과는 논술 미선발 — 에너지·원자력·생명공학 등 지원 불가"},
+    math:{v:"전 범위", s:"미적·기하·확통", cls:""},
+    min:{v:"3개 합 7", s:"탐구 상위 1과목", cls:""},
+    w:{v:"논술 100%", s:"", cls:""},
+    exam:{v:"11/29 (일)", s:"3개 교시 · 90분", cls:""},
+    tags:["only","easy"],
+    raw:[
+      ["출제범위","수학, 수학Ⅰ, 수학Ⅱ, 확률과통계, 미적분, 기하 — 수리논술 2문항(소문항 각 2~3문항) (p.45)"],
+      ["수능최저","전체(의예과 제외): 국어·수학·영어·탐구(상위 1개 과목) 중 3개 영역 등급합 7 이내 (p.45). 필수 응시: 국·수·영·탐구2과목·한국사"],
+      ["논술 미선발","자원환경공학과, 전기·생체공학부(바이오메디컬), 생명공학과, 유기나노공학과, 에너지공학과, 원자력공학과, 데이터사이언스학부"]
+    ],
+    groups:[
+      {t:"오전 09:30~11:00", deps:[["건축학부",0],["건축공학부",0],["건설환경공학과",0],["도시공학과",0],["간호학과",0],["식품영양학과",0],["한양인터칼리지(자연)",0]]},
+      {t:"오후1 13:30~15:00", deps:[["전기·생체공학부(전기)",1],["신소재공학부",0],["화학공학과",0],["기계공학부",0],["산업공학과",0],["수학과",0],["물리학과",0],["화학과",0],["생명과학과",0],["수학교육과",0]]},
+      {t:"오후2 17:00~18:30", deps:[["융합전자공학부",1],["컴퓨터소프트웨어학부",1],["반도체공학과",1],["미래자동차공학과",0]]}
+    ]
+  },
+  {
+    id:"cau", name:"중앙대(일반형)", type:"논술전형(일반형)",
+    flag:{k:"bad", t:"논술 100%가 아님 — 논술 70% + 학생부 30%. 일반 자연계는 기하 제외"},
+    math:{v:"기하 제외", s:"미적·확통만", cls:"warn"},
+    min:{v:"3개 합 6", s:"+ 한국사 4등급", cls:""},
+    w:{v:"논술 70%", s:"+ 학생부 30%", cls:"warn"},
+    exam:{v:"11/28(토)", s:"1교시 10:00 / 2교시 14:00", cls:""},
+    tags:[],
+    raw:[
+      ["출제범위","자연 수리논술(의·약학부 외): 수학, 수학Ⅰ, 수학Ⅱ, 확률과 통계, 미적분 — 기하 제외. 4문항 (p.61)"],
+      ["수능최저","국어·수학·영어·탐구 3개 영역 등급 합 6 이내, 한국사 4등급 이내. 탐구 상위 1과목 (p.60)"],
+      ["유리한 규정","영어는 1등급과 2등급을 통합하여 1등급으로 간주함 — 영어 2등급이면 실질 1등급 효과"],
+      ["반영비율","논술 70 + 학생부 교과 20 + 출결 10. 교과는 국·수·영·사·과 석차등급 상위 5과목 (p.60)"],
+      ["원서접수","2026.9.8(화) 10시 ~ 9.11(금) 18시 / 서류 온라인 업로드 ~9.15(화) 16시 (p.51, p.63)"]
+    ],
+    groups:[
+      {t:"2교시 14:00~16:00", deps:[["전자전기공학부",1],["지능형반도체공학과",1],["융합공학부",0]]},
+      {t:"1교시", deps:[["소프트웨어학부",1],["AI학과",1],["기계공학부",0],["화학공학과",0],["에너지시스템공학부",0],["첨단소재공학과",0],["사회기반시스템공학부",0],["건축학부",0],["생명자원공학부",0],["식품공학부",0],["시스템생명공학과",0],["예술공학부",0],["간호학과(자연)",0],["산업보안학과(자연)",0]]}
+    ]
+  },
+  {
+    id:"cau_creative", name:"중앙대(창의형)", type:"논술전형(창의형) · 2027 신설", quota:86,
+    flag:{k:"good", t:"★ 2027 신설 — 수능최저 없음 + 고사일 10/11(일)로 연세대 다음날. 단 졸업예정자만 지원 가능"},
+    math:{v:"미적분만", s:"확통·기하 제외", cls:"good"},
+    min:{v:"없음", s:"수능최저 미적용", cls:"good"},
+    w:{v:"논술 70%", s:"+ 학생부 30%", cls:"warn"},
+    exam:{v:"10/11(일)", s:"자연 2교시 14:00~16:00", cls:""},
+    tags:["nomin"],
+    raw:[
+      ["★ 지원자격 제한","2027년 국내 고교 졸업예정자만 지원 가능. 검정고시·외국고 졸업(예정)자 지원 불가 (p.62)"],
+      ["출제범위","자연 수리논술(의·약학부 외): 수학, 수학Ⅰ, 수학Ⅱ, 미적분 — 확통·기하 모두 제외. 6문항 (p.63)"],
+      ["수능최저","없음 — 연세대와 함께 수능최저 없는 두 전형 중 하나 (p.63)"],
+      ["반영비율","논술 70 + 학생부 교과 20 + 출결 10. 교과는 석차등급 상위 5과목 (p.63)"],
+      ["논술고사","2026.10.11.(일) 자연계열 2교시 14:00~16:00 / 고사장 조회 10.7(수) 14시 (p.62)"],
+      ["원서접수","2026.9.8(화) 10시 ~ 9.11(금) 18시 — 일반형과 동일 (p.62)"],
+      ["전형료","60,000원 (일반형 65,000원)"],
+      ["★ 일반형과 별개 전형","일반형(11/28)과 창의형(10/11)은 서로 다른 전형이라 중복지원 가능 여부는 입학처 확인 필요"]
+    ],
+    groups:[
+      {t:"2교시 14:00~16:00 (자연 44명)", deps:[["전자전기공학부",1],["소프트웨어학부",1],["기계공학부",0],["화학공학과",0],["융합공학부",0],["약학부",1],["의학부",1]]}
+    ]
+  },
+  {
+    id:"khu", name:"경희대", type:"논술우수자전형 · 한의예과", quota:15,
+    flag:{k:"bad", t:"★ 수능최저가 7개 중 가장 높음(3합4) + 탐구를 2과목 평균으로 반영 → 물리 등급이 직접 영향"},
+    math:{v:"확인 필요", s:"의·약학계 출제범위 미확인", cls:"warn"},
+    min:{v:"3개 합 4", s:"한국사 5 이내 · 탐구 2과목 평균", cls:"warn"},
+    w:{v:"논술 100%", s:"1,000점 만점", cls:""},
+    exam:{v:"11/21(토)", s:"15:00~17:00 · 서울캠퍼스", cls:"warn"},
+    tags:["only"],
+    raw:[
+      ["지원 학과","<b>한의예과(자연) 15명</b> — 경희대는 이 학과 하나만 지원 (지원자 확정)"],
+      ["★ 수능최저","국어·수학·영어·탐구(2과목) 중 <b>3개 영역 등급합 4 이내</b> + 한국사 5등급 이내 (p.64)"],
+      ["★ 탐구 반영 방식","탐구는 <b>2과목 평균등급을 소수점 버림 없이 그대로</b> 반영. '상위 1과목'이 아니다 → 물리 등급이 판정에 직접 들어오는 유일한 대학군 (성균관대와 함께)"],
+      ["★ 고사일 충돌","11/21(토) 15:00~17:00 → <b>서강대 1부(16:00~17:40)와 완전 충돌</b>. 서강대 병행 시 반드시 2부(19:00) 학과 선택. 고려대는 오전조만 병행 가능(오후조는 40분 간격으로 불가)"],
+      ["반영비율","논술 100% — 학생부 미반영. 동점자는 ①고배점 문항 ②학생부 교과 순 (p.64)"],
+      ["원서접수","2026.9.8(화) ~ 9.11(금) 18:00 / 서류 9.15(화) 17:00 마감 — 온라인 업로드만 (p.65)"],
+      ["고사장","서울캠퍼스(회기동). 고사장 확인 11.18(수) 18:00 khu.ac.kr (p.65)"],
+      ["주의","요강 명시 — 논술고사일 착각으로 인한 미응시는 본인 귀책. 구제·환불 없음 (p.65)"],
+      ["출제범위 확인 필요","⚠️ 한의예과(자연) 논술의 수학·과학 출제범위는 입학처 별도 안내 확인 필요"]
+    ],
+    groups:[
+      {t:"11/21(토) 15:00~17:00 <의·약학계> 서울캠퍼스", deps:[["한의예과(자연) 15",1],["의예과",1],["치의예과",1],["약학과",1]]}
+    ]
+  }
+];
+
+const TL = [
+  {d:"2026-09-07", t:"연세대 · 고려대 접수 시작", s:"10:00 — 이틀 뒤 마감이라 가장 촉박"},
+  {d:"2026-09-08", t:"나머지 5개 대학 접수 시작", s:"서강·성대·한양·중앙·경희 모두 10:00"},
+  {d:"2026-09-09", t:"연세대 · 고려대 접수 마감", s:"17:00 정각 — 고려대 서류는 18:00까지"},
+  {d:"2026-09-10", t:"연세대 서류 마감", s:"17:00 이후 업로드 불가"},
+  {d:"2026-09-11", t:"서강 · 성대 · 한양 · 중앙 · 경희 접수 마감", s:"5개 대학 모두 18:00 정각"},
+  {d:"2026-09-14", t:"한양대 서류 마감", s:"온라인 PDF 업로드 (우편·방문 불가)"},
+  {d:"2026-09-15", t:"서강 18:00 · 경희 17:00 · 중앙 16:00 서류 마감", s:"세 곳 마감 시각이 모두 다름 — 경희대는 17:00"},
+  {d:"2026-10-07", t:"중앙대 창의형 고사장 공고", s:"14:00 입학처 홈페이지"},
+  {d:"2026-10-10", t:"연세대 논술", s:"10:30~12:30 · 수능최저 없음", k:"exam"},
+  {d:"2026-10-11", t:"중앙대 창의형 논술 (자연)", s:"2교시 14:00~16:00 — 연세대 바로 다음날, 병행 가능", k:"exam"},
+  {d:"2026-11-03", t:"성균관대 시험장 발표", s:"개인별 배정 — 서울/수원 중 임의, 반드시 확인"},
+  {d:"2026-11-18", t:"경희대 고사장 확인", s:"18:00 khu.ac.kr — 한의예과는 서울캠퍼스"},
+  {d:"2026-11-21", t:"고려대 · 경희대 · 서강대 논술", s:"고대 08:30·12:30 입실 / 경희 한의예 15:00~17:00 / 서강 16:00·19:00", k:"exam", clash:1},
+  {d:"2026-11-22", t:"성균관대 논술", s:"08:30 / 13:00 / 17:00 중 배정", k:"exam"},
+  {d:"2026-11-23", t:"한양대 고사장 배정 공지", s:"이후 입학처 홈페이지"},
+  {d:"2026-11-24", t:"중앙대 고사장 조회", s:"14:00 입학처 홈페이지"},
+  {d:"2026-11-28", t:"중앙대 논술 (자연)", s:"1교시 10:00 / 2교시 14:00 — 입실은 40분 전까지", k:"exam"},
+  {d:"2026-11-29", t:"한양대 논술 (자연)", s:"09:30 / 13:30 / 17:00 중 배정 — 중앙대 다음날", k:"exam"},
+  {d:"2026-12-18", t:"합격자 발표", s:"연세·한양·경희 18:00 · 중앙 14:00"}
+];
+
+/* 수능최저 판정 규칙 — 등급은 낮을수록 좋음(1등급 최상), 조건은 "등급합 N 이하" */
+const RULES = {
+  yonsei:  null,   // 수능최저 미적용
+  korea:   {pick:4, sum:8, subj:["국어","수학","영어","탐구1"], hist:4,
+            label:"4개 영역 합 8 + 한국사 4"},
+  sogang:  {pick:3, sum:7, subj:["국어","수학","영어","탐구1"], hist:4,
+            label:"3개 합 7 + 한국사 4"},
+  skku:    {pick:3, sum:6, subj:["국어","수학","영어","탐구평균"],
+            label:"3개 합 6 (학과별 5도 있음)", alt:{pick:3, sum:5, label:"합 5 학과"}},
+  hanyang: {pick:3, sum:7, subj:["국어","수학","영어","탐구1"],
+            label:"3개 합 7"},
+  cau:     {pick:3, sum:6, subj:["국어","수학","영어","탐구1"], hist:4, engMerge:true,
+            label:"3개 합 6 + 한국사 4 (영어 1·2등급 통합)"},
+  cau_creative: null,  // 2027 신설 창의형 — 수능최저 미적용
+  /* 경희대 한의예과: 탐구를 '2과목 평균등급, 소수점 버림 없이 그대로' 반영한다.
+     상위 1과목이 아니므로 탐구2(과탐) 등급이 판정에 직접 들어온다 — 7개 중 최저 기준이 가장 높다. */
+  khu:     {pick:3, sum:4, subj:["국어","수학","영어","탐구평균"], hist:5,
+            label:"3개 합 4 + 한국사 5 (탐구 2과목 평균)"}
+};
+
+const FIELDS = ["국어","수학","영어","탐구1","탐구2","한국사"];
+/* 백분위는 영어·한국사가 절대평가라 산출되지 않음 */
+const PCT_FIELDS = ["국어","수학","탐구1","탐구2"];
+const KEY = "susi2027.grades.v1";
+const PKEY = "susi2027.pct.v1";
+
+/* 성적은 배포본에 넣지 않는다(저장소 public). 사용자가 직접 입력하면
+   이 기기의 localStorage 에만 저장되고 서버로 전송되지 않는다. */
+function loadGrades(){
+  try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; }
+}
+function saveGrades(g){
+  try{ localStorage.setItem(KEY, JSON.stringify(g)); }catch(e){}
+}
+function loadPct(){
+  try{ return JSON.parse(localStorage.getItem(PKEY)) || {}; }catch(e){ return {}; }
+}
+function savePct(p){
+  try{ localStorage.setItem(PKEY, JSON.stringify(p)); }catch(e){}
+}
+
+/** 등급 수집. 탐구평균은 2과목 평균(소수점 유지 — 성대는 버림 없이 그대로 반영) */
+function pickGrades(rule, g){
+  const out=[], missing=[];
+  for(const s of rule.subj){
+    let v;
+    if(s==="탐구평균"){
+      if(g.탐구1!=null && g.탐구2!=null) v=(g.탐구1+g.탐구2)/2;
+      else if(g.탐구1!=null) v=g.탐구1;
+    } else if(s==="영어" && rule.engMerge){
+      v = g.영어!=null ? Math.max(1, g.영어===2?1:g.영어) : undefined; // 1·2등급 통합→1
+    } else v = g[s];
+    if(v==null) missing.push(s); else out.push({n:s, v});
+  }
+  return {out, missing};
+}
+
+/** 반환: {verdict:'충족'|'미충족'|'미적용'|'확인필요', detail} */
+function judge(uid, g){
+  const rule = RULES[uid];
+  if(rule === null) return {verdict:"미적용", detail:"수능최저 없음 — 논술 성적만으로 결정"};
+  if(!rule) return {verdict:"확인필요", detail:"기준 미등록"};
+
+  const filled = FIELDS.some(f=>g[f]!=null);
+  if(!filled) return {verdict:"확인필요", detail:rule.label};
+
+  if(rule.hist!=null){
+    if(g.한국사==null) return {verdict:"확인필요", detail:"한국사 등급 미입력"};
+    if(g.한국사>rule.hist)
+      return {verdict:"미충족", detail:`한국사 ${g.한국사}등급 > 기준 ${rule.hist}등급`};
+  }
+
+  const {out, missing} = pickGrades(rule, g);
+  if(out.length < rule.pick)
+    return {verdict:"확인필요", detail:`미입력: ${missing.join("·")}`};
+
+  const best = out.slice().sort((a,b)=>a.v-b.v).slice(0, rule.pick);
+  const sum = best.reduce((a,b)=>a+b.v, 0);
+  const shown = +sum.toFixed(1);
+  const lbl = best.map(b=>`${b.n}${+b.v.toFixed(1)}`).join("+");
+
+  const mk = (target, tag="") =>
+    sum <= target
+      ? {verdict:"충족", detail:`${lbl} = ${shown} ≤ ${target}${tag}`}
+      : {verdict:"미충족", detail:`${lbl} = ${shown} > ${target}${tag}`};
+
+  // 성대: 학과별로 합 6 / 합 5 두 갈래 → 둘 다 알려준다
+  if(rule.alt){
+    const a = mk(rule.sum, " (합6 학과)");
+    const b = mk(rule.alt.sum, " (합5 학과)");
+    if(a.verdict==="충족" && b.verdict==="충족")
+      return {verdict:"충족", detail:`${lbl} = ${shown} — 합5·합6 학과 모두 충족`};
+    if(a.verdict==="충족")
+      return {verdict:"충족", detail:`${lbl} = ${shown} — 합6 학과만 가능 (합5 학과는 미충족)`};
+    return {verdict:"미충족", detail:`${lbl} = ${shown} > 6 — 성대 자연계 전 학과 미충족`};
+  }
+  return mk(rule.sum);
+}
+
+/* 대학별 추천 학과 — tier: 1 최상위 / 2 상위 / 3 중상위.
+   논술전형은 내신·수능 반영이 적어 '논술 실력'이 당락을 가르므로, tier 는
+   지원자군 밀집도(경쟁률·선호도) 기준의 상대 난이도이지 합격선 예측치가 아니다. */
+const PICKS = {
+  yonsei:[
+    {n:"전기전자공학부",q:20,t:1},{n:"기계공학부",q:18,t:2},{n:"신소재공학부",q:13,t:2},
+    {n:"화공생명공학부",q:12,t:2},{n:"시스템반도체공학과",q:12,t:1},
+    {n:"사회환경시스템공학부",q:10,t:3},{n:"생명공학과",q:8,t:2},{n:"건축공학과",q:7,t:3},
+    {n:"컴퓨터과학과",q:6,t:1},{n:"천문우주학과",q:4,t:3},{n:"대기과학과",q:3,t:3}
+  ],
+  korea:[
+    {n:"전기전자공학부",t:1,s:"오후"},{n:"컴퓨터학과",t:1,s:"오전"},{n:"기계공학부",t:2,s:"오후"},
+    {n:"화공생명공학과",t:2,s:"오후"},{n:"신소재공학부",t:2,s:"오후"},
+    {n:"건축사회환경공학부",t:3,s:"오후"},{n:"환경생태공학부",t:3,s:"오전"},
+    {n:"지구환경과학과",t:3,s:"오전"},{n:"보건환경융합과학부",t:3,s:"오전"}
+  ],
+  sogang:[
+    {n:"컴퓨터공학과",q:12,t:1,s:"2부 19:00"},{n:"전자공학과",q:12,t:2,s:"1부 16:00"},
+    {n:"화공생명공학과",q:12,t:2,s:"2부 19:00"},{n:"기계공학과",q:10,t:2,s:"1부 16:00"},
+    {n:"수학과",q:6,t:3,s:"1부 16:00"},{n:"물리학과",q:6,t:3,s:"2부 19:00"}
+  ],
+  skku:[
+    {n:"공학계열",t:2,m:6,s:"2교시 13:00"},{n:"자연과학계열",t:3,m:6,s:"2교시 13:00"},
+    {n:"건설환경공학부",t:3,m:6,s:"1교시 08:30"},{n:"글로벌AI융합학부",t:2,m:6,s:"1교시 08:30"},
+    {n:"반도체시스템공학과",q:10,t:1,m:5,s:"1교시 08:30"},{n:"전자전기정보공학부",t:1,m:5,s:"1교시 08:30"},
+    {n:"컴퓨터공학과",t:1,m:5,s:"1교시 08:30"},{n:"에너지학과",q:5,t:2,m:5,s:"1교시 08:30"}
+  ],
+  hanyang:[
+    {n:"융합전자공학부",t:1,s:"오후2 17:00"},{n:"컴퓨터소프트웨어학부",t:1,s:"오후2 17:00"},
+    {n:"반도체공학과",t:1,s:"오후2 17:00"},{n:"미래자동차공학과",t:2,s:"오후2 17:00"},
+    {n:"기계공학부",t:2,s:"오후1 13:30"},{n:"화학공학과",t:2,s:"오후1 13:30"},
+    {n:"신소재공학부",t:2,s:"오후1 13:30"},{n:"산업공학과",t:3,s:"오후1 13:30"},
+    {n:"건설환경공학과",t:3,s:"오전 09:30"},{n:"도시공학과",t:3,s:"오전 09:30"}
+  ],
+  cau:[
+    {n:"소프트웨어학부",q:9,t:1,s:"1교시 10:00"},{n:"AI학과",q:7,t:1,s:"1교시 10:00"},
+    {n:"전자전기공학부",q:10,t:2,s:"2교시 14:00"},{n:"지능형반도체공학과",q:5,t:2,s:"2교시 14:00"},
+    {n:"기계공학부",q:9,t:2,s:"1교시 10:00"},{n:"화학공학과",q:6,t:2,s:"1교시 10:00"},
+    {n:"에너지시스템공학부",q:9,t:3,s:"1교시 10:00"},{n:"첨단소재공학과",q:7,t:3,s:"1교시 10:00"},
+    {n:"건축학부",q:10,t:3,s:"1교시 10:00"}
+  ],
+  cau_creative:[
+    {n:"소프트웨어학부",q:8,t:1,s:"2교시 14:00"},{n:"전자전기공학부",q:8,t:2,s:"2교시 14:00"},
+    {n:"기계공학부",q:8,t:2,s:"2교시 14:00"},{n:"화학공학과",q:4,t:2,s:"2교시 14:00"},
+    {n:"융합공학부",q:4,t:3,s:"2교시 14:00"}
+  ]
+};
+
+const TIER_LABEL = {1:"최상위",2:"상위",3:"중상위"};
+
+/** 국·수·탐 평균 백분위 → 지원자군 내 위치 밴드 */
+function pctBand(p){
+  const parts=[];
+  if(p.국어!=null) parts.push(p.국어);
+  if(p.수학!=null) parts.push(p.수학);
+  const t=[p.탐구1,p.탐구2].filter(v=>v!=null);
+  if(t.length) parts.push(t.reduce((a,b)=>a+b,0)/t.length);
+  if(parts.length<2) return null;
+  const avg = parts.reduce((a,b)=>a+b,0)/parts.length;
+  let band;
+  if(avg>=95) band=1; else if(avg>=88) band=2; else if(avg>=78) band=3; else band=4;
+  return {avg:+avg.toFixed(1), band};
+}
+
+/** 대학·학과 추천 */
+function strategize(g, p){
+  const pb = pctBand(p);
+  const rows = [];
+  for(const [uid, list] of Object.entries(PICKS)){
+    const u = U.find(x=>x.id===uid);
+    const j = judge(uid, g);
+    let picks = list;
+
+    // 성대: 최저 판정에 따라 합5 학과를 걸러낸다
+    if(uid==="skku" && j.detail.includes("합6 학과만"))
+      picks = list.filter(x=>x.m!==5);
+
+    // 백분위 밴드로 tier 필터 — 밴드보다 한 단계 위까지 상향 허용
+    let cand = pb ? picks.filter(x=>x.t >= pb.band-1) : picks;
+    if(!cand.length) cand = picks;
+
+    rows.push({uid, name:u.name, verdict:j.verdict, detail:j.detail, picks:cand.slice(0,4), pb});
+  }
+  return {rows, pb};
+}
+
+const TODAY = new Date(2026,8,1);
+
+function dday(s){
+  const [y,m,d] = s.split("-").map(Number);
+  return Math.round((new Date(y,m-1,d) - TODAY)/86400000);
+}
+
+/* 모집단위 칩 — 이름 뒤에 2027 논술 모집인원을 붙인다.
+   인원·최상위 표시는 data.js(=data/universities.json) 를 단일 출처로 쓴다. */
+function deptChips(uid, names){
+  const src = (window.DATA.universities||[]).find(x=>x.id===uid);
+  const by = {};
+  (src ? src.departments : []).forEach(d=>{ by[d.name]=d; });
+  return names.map(raw=>{
+    // 구버전 하드코딩 목록은 이름에 인원이 붙어 있다("전기전자공학부 20") → 떼어내고 조회
+    const n = String(raw).replace(/\s+\d+$/,"");
+    const d = by[n];
+    if(!d) return `<span class="dep dim">${n}</span>`;   // 인문계 등 데이터 밖 학과
+    const q = d.quota!=null ? ` ${d.quota}` : "";
+    const t = d.tier==="최상위" ? " top" : "";
+    return `<span class="dep${t}">${n}<b>${q}</b></span>`;
+  }).join("");
+}
+
+function card(u){
+  // data.js 의 exam_groups 를 우선 사용하고, 없으면 기존 하드코딩 groups 로 대체
+  const src = (window.DATA.universities||[]).find(x=>x.id===u.id);
+  const eg = src && src.exam_groups && src.exam_groups.length ? src.exam_groups : null;
+  const g = eg
+    ? eg.map(x=>`
+    <div class="slotgrp">
+      <div class="t">${x.slot}</div>
+      <div class="deps">${deptChips(u.id, x.departments)}</div>
+    </div>`).join("")
+    : u.groups.map(x=>`
+    <div class="slotgrp">
+      <div class="t">${x.t}</div>
+      <div class="deps">${deptChips(u.id, x.deps.map(d=>d[0]))}</div>
+    </div>`).join("");
+
+  const raw = u.raw.map(([k,v])=>`
+    <div class="sec"><h3>${k}</h3><div class="raw">${v}</div></div>`).join("");
+
+  return `
+  <article class="uni" data-tags="${u.tags.join(" ")}" data-open="false">
+    <div class="uhead" role="button" tabindex="0" aria-expanded="false">
+      <h2>${u.name}</h2>
+      <span class="utype">${u.type}${u.quota?` · ${u.quota}명`:""}</span>
+      <span class="verdict" data-uid="${u.id}"></span>
+      <span class="caret">▾</span>
+    </div>
+    <div class="flag ${u.flag.k==="good"?"good":"bad"}">${u.flag.t}</div>
+    <div class="slots">
+      <div class="slot"><div class="k">수학 범위</div><div class="v ${u.math.cls}">${u.math.v}<small>${u.math.s}</small></div></div>
+      <div class="slot"><div class="k">수능최저</div><div class="v ${u.min.cls}">${u.min.v}<small>${u.min.s}</small></div></div>
+      <div class="slot"><div class="k">반영비율</div><div class="v ${u.w.cls}">${u.w.v}<small>${u.w.s}</small></div></div>
+      <div class="slot"><div class="k">논술고사</div><div class="v ${u.exam.cls}">${u.exam.v}<small>${u.exam.s}</small></div></div>
+    </div>
+    <div class="detail">
+      <div class="judgeline" data-uid="${u.id}"></div>
+      ${raw}
+      <div class="sec"><h3>모집단위 · 고사 시간대</h3>${g}</div>
+    </div>
+  </article>`;
+}
+
+document.getElementById("cards").innerHTML = U.map(card).join("");
+
+document.getElementById("timeline").innerHTML = TL.map(e=>{
+  const n = dday(e.d), [,m,d] = e.d.split("-");
+  return `<div class="row">
+    <div class="date">${+m}/${+d}<small>${["일","월","화","수","목","금","토"][new Date(e.d).getDay()]}</small></div>
+    <div class="ev"><div class="n">${e.t}</div><div class="d">${e.s}</div></div>
+    <span class="dd${n>60?" far":""}">D-${n}</span>
+  </div>`;
+}).join("");
+
+/* ── 한양대 실측 (data.js 에서 로드) ───────── */
+function renderActual(){
+  const box = document.getElementById("actual");
+  const hy = window.DATA?.hanyang_detail;
+  if(!hy?.자연계열?.length){ box.innerHTML=""; return; }
+
+  const rows = hy.자연계열
+    .filter(d=>d.논술평균["2026"]!=null && d.학과!=="의예과")
+    .sort((a,b)=>a.최저충족_실질경쟁률_2026 - b.최저충족_실질경쟁률_2026);
+
+  box.innerHTML = `
+    <div class="ahead">
+      <h2>한양대 실측 — 논술 평균점수</h2>
+      <span class="pill g">공식 · 2026.05.11</span>
+    </div>
+    <p class="asub">
+      6개 대학 중 <b>한양대만 학과별 논술 평균점수를 공개</b>합니다.
+      「2027년 입시결과 가이드북」 기준이며, 실질경쟁률이 낮은 순으로 정렬했습니다.
+    </p>
+    <div class="atable">
+      <table>
+        <thead><tr>
+          <th>학과</th><th>논술평균<small>100점</small></th>
+          <th>명목<small>경쟁률</small></th><th>최저<small>충족률</small></th><th>실질<small>경쟁률</small></th>
+        </tr></thead>
+        <tbody>${rows.map(d=>`
+          <tr>
+            <td class="dn">${d.학과}<small>${d.시간대}</small></td>
+            <td class="num ${d.논술평균["2026"]<60?"low":""}">${d.논술평균["2026"].toFixed(1)}</td>
+            <td class="num dim">${d.경쟁률["2026"].toFixed(0)}</td>
+            <td class="num dim">${d.수능최저충족률_2026}%</td>
+            <td class="num hi">${d.최저충족_실질경쟁률_2026.toFixed(0)}</td>
+          </tr>`).join("")}</tbody>
+      </table>
+    </div>
+    <div class="anote">
+      <b>읽는 법</b>
+      <b class="i">최상위 학과일수록 논술 평균이 낮습니다</b> — 컴퓨터소프트웨어 51.0점, 융합전자 55.2점.
+      지원자가 몰려 변별이 극심하게 갈린 결과이며, <b class="i">명목 119:1이어도 51점이면 합격선</b>이었다는 뜻입니다.
+      <br>
+      <b class="i">실질경쟁률 = 명목 × 최저충족률.</b> 충족률이 42~67%라 지원자의 3분의 1에서 절반이
+      최저 미달로 자동 탈락합니다. 결시분은 아직 안 뺀 값이라 실제 경쟁은 이보다 더 낮습니다.
+    </div>`;
+}
+
+/* ── 기출 확보 현황 ─────────────────── */
+const PROB_SRC = {
+  "고려대":"https://oku.korea.ac.kr/oku/cms/FR_CON/index.do?MENU_ID=720",
+  "연세대":"https://admission.yonsei.ac.kr/seoul/",
+  "서강대":"https://admission.sogang.ac.kr/enter/html/rolling/data.asp",
+  "성균관대":"https://admission.skku.edu/admission/html/rolling/question.html",
+  "한양대":"https://go.hanyang.ac.kr/web/pds/pds_list.do?m_type=SUSI&ct02=ns02",
+  "중앙대":"https://admission.cau.ac.kr"
+};
+function renderProbs(){
+  const box = document.getElementById("probs");
+  const p = window.DATA?.problems || {};
+  const names = ["연세대","고려대","서강대","성균관대","한양대","중앙대"];
+  const got = names.filter(n=>p[n]);
+  box.innerHTML = `
+    <div class="ahead">
+      <h2>기출 · 모의논술</h2>
+      <span class="pill ${got.length>=4?"g":""}">${got.length}/6 확보</span>
+    </div>
+    <p class="asub">
+      각 대학이 공개하는 <b>모의논술 자료집</b>과 <b>선행학습 영향평가 보고서</b>에는
+      문제·출제의도·채점기준·예시답안이 함께 실립니다. 실제 논술 대비의 1차 자료입니다.
+    </p>
+    <div class="plist2">${names.map(n=>{
+      const d = p[n];
+      return `<div class="prow ${d?"on":""}">
+        <b>${n}</b>
+        ${d ? `<span class="pyear">${d.연도.join(" · ")}</span>
+               <span class="pcnt">${d.파일수}개</span>
+               <em>${d.구성}</em>`
+            : `<span class="pno">미확보</span>`}
+        <a href="${PROB_SRC[n]}" target="_blank" rel="noopener">입학처 ↗</a>
+      </div>`;}).join("")}</div>
+    <div class="anote">
+      <b>보관 위치</b>
+      내려받은 PDF는 맥북 <code>problems/</code> 폴더에 있습니다.
+      용량이 커서 이 페이지에는 목록만 싣고 파일은 올리지 않았습니다.
+    </div>`;
+}
+
+/* ── 성적 입력 · 수능최저 판정 ─────────────── */
+const VMAP = {"충족":"ok","미충족":"no","미적용":"na","확인필요":"unk"};
+
+let MODE = "grade";
+
+function renderInputs(){
+  const isG = MODE==="grade";
+  const fields = isG ? FIELDS : PCT_FIELDS;
+  document.getElementById("ginputs").innerHTML = fields.map(f=>`
+    <label class="gfield">
+      <span>${f}</span>
+      <input type="number" inputmode="numeric"
+             min="${isG?1:0}" max="${isG?9:100}" step="1"
+             data-f="${f}" placeholder="–" aria-label="${f} ${isG?'등급':'백분위'}">
+    </label>`).join("");
+  document.getElementById("gtip").textContent = isG
+    ? "수능최저는 등급으로만 판정됩니다. 비워두면 그 영역은 제외되고, 탐구는 2과목을 넣어야 평균 기준 대학(성대)이 계산됩니다."
+    : "백분위는 지원 가능권 판단에 씁니다. 영어·한국사는 절대평가라 백분위가 없어 등급 탭에서만 입력합니다.";
+}
+
+/* ── 전략 제안 렌더 ─────────────────── */
+function renderStrategy(){
+  const g = loadGrades(), p = loadPct();
+  const box = document.getElementById("strategy");
+  const anyG = FIELDS.some(f=>g[f]!=null);
+  const anyP = PCT_FIELDS.some(f=>p[f]!=null);
+  if(!anyG && !anyP){ box.innerHTML=""; return; }
+
+  const {rows, pb} = strategize(g, p);
+  const ok = rows.filter(r=>r.verdict==="충족"||r.verdict==="미적용");
+  const no = rows.filter(r=>r.verdict==="미충족");
+
+  const head = `
+    <div class="shead">
+      <h3>지원 전략</h3>
+      ${pb?`<span class="pill">국·수·탐 평균 ${pb.avg} · ${TIER_LABEL[pb.band]||"기초"}권</span>`:""}
+      <span class="pill ${ok.length>=4?"g":"w"}">최저 통과 ${ok.length}/${rows.length}</span>
+    </div>`;
+
+  const warn = no.length ? `
+    <div class="sblock w">
+      <b>${no.map(r=>r.name).join(" · ")} — 수능최저 미충족</b>
+      논술을 아무리 잘 봐도 불합격입니다. 이 ${no.length}장은 사실상 못 쓰는 카드이니
+      ${ok.length < 6 ? "남은 대학에 집중하거나, 최저가 없는 연세대 비중을 높이세요." : "다른 대학으로 돌리세요."}
+    </div>` : "";
+
+  const cards = ok.map(r=>{
+    const clash = r.uid==="korea" || r.uid==="sogang";
+    return `
+    <div class="scard">
+      <div class="sc-h">
+        <b>${r.name}</b>
+        <span class="verdict v-${r.verdict==="미적용"?"na":"ok"}">${r.verdict==="미적용"?"최저 없음":"충족"}</span>
+      </div>
+      <div class="sc-d">${r.detail}</div>
+      <div class="sc-p">
+        ${r.picks.map(x=>`
+          <span class="pk t${x.t}">
+            ${x.n}${x.q?`<i>${x.q}명</i>`:""}
+            <em>${TIER_LABEL[x.t]}</em>
+            ${x.s?`<u>${x.s}</u>`:""}
+          </span>`).join("")}
+      </div>
+      ${clash?`<div class="sc-n">11/21 같은 날 — ${r.uid==="korea"?"서강대와 겹침. 오전조 학과를 고르면 서강대 저녁과 병행 가능성":"고려대와 겹침. 저녁 시험이라 고려대 오전조와 병행 가능성"}</div>`:""}
+    </div>`;
+  }).join("");
+
+  box.innerHTML = head + warn + `<div class="scards">${cards}</div>` + `
+    <div class="sblock">
+      <b>6장 짜는 법</b>
+      대학당 1개 학과만 쓸 수 있으니 <b>어느 과를 고르냐</b>가 전부입니다.
+      ${pb?`평균 백분위 ${pb.avg} 기준으로 <b>${TIER_LABEL[pb.band]||"기초"}권</b> 학과를 중심에 두고
+      한 단계 위까지 상향으로 섞은 목록입니다.`:"등급만 입력된 상태라 최저 통과 여부만 반영했습니다. 백분위를 넣으면 학과 범위가 좁혀집니다."}
+      논술전형은 내신·수능 반영이 작아 <b>논술 실력이 당락을 가릅니다</b> —
+      위 구분은 합격선 예측이 아니라 지원자가 몰리는 정도입니다.
+    </div>
+    <div class="sblock">
+      <b>일정으로 본 조합</b>
+      대학이 6곳인데 <b>지원 가능 전형은 7개</b>입니다 — 중앙대가 일반형(11/28)과
+      창의형(10/11) 둘로 나뉘기 때문입니다. 6장을 다 쓰려면 이 중 하나만 버리면 됩니다.
+      <br><br>
+      <b>10월</b> 연세대 10/10(토) → 중앙대 창의형 10/11(일). 이 둘은 <b>수능최저가 없고
+      연달아 붙어 있어</b> 수능 전에 2장을 소화할 수 있습니다.
+      <b>11월</b> 고려대·서강대 11/21(같은 날, 고대 오전조+서강 저녁이면 병행 가능) ·
+      성균관대 11/22 · 중앙대 일반형 11/28 · 한양대 11/29.
+      <br><br>
+      ⚠️ 창의형은 <b>2027년 졸업예정자만</b> 지원 가능하고 출제범위가 <b>미적분만</b>입니다.
+      일반형과의 중복지원 가능 여부는 입학처 확인이 필요합니다.
+    </div>`;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   11/21 충돌 타임라인 + 실행 가능한 6장 조합
+   데이터는 data/strategy.json (build_strategy.py 산출)
+   ══════════════════════════════════════════════════════ */
+const ST = (window.DATA && window.DATA.strategy) || {};
+
+function m2x(t, lo, hi){ return ((t-lo)/(hi-lo))*100; }
+function hm(t){ return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0"); }
+function toMin(s){ const [h,m]=s.split(":").map(Number); return h*60+m; }
+
+/** 같은 날 2개 이상 겹치는 날짜를 간트로 그린다 */
+function renderClash(){
+  const host = document.getElementById("clash");
+  if(!host || !ST.slots) return;
+  const dates = ST.exam_dates || {};
+  const byDay = {};
+  Object.entries(dates).forEach(([id,d])=>{ (byDay[d]=byDay[d]||[]).push(id); });
+  const days = Object.entries(byDay).filter(([,ids])=>ids.length>1).sort();
+  if(!days.length){ host.innerHTML=""; return; }
+
+  const NAME = {};
+  (window.DATA.universities||[]).forEach(u=>NAME[u.id]=u.name);
+
+  host.innerHTML = days.map(([day, ids])=>{
+    const segs = ids.flatMap(id=>(ST.slots[id]||[]).map(sl=>({
+      id, name:NAME[id]||id, label:sl[0], a:toMin(sl[1]), b:toMin(sl[2])
+    })));
+    const lo = Math.min(...segs.map(x=>x.a)) - 30;
+    const hi = Math.max(...segs.map(x=>x.b)) + 30;
+
+    // 이 날짜의 충돌 판정 결과
+    const cf = (ST.same_day_conflicts||[]).filter(c=>c.date===day);
+    const blocked = cf.flatMap(c=>c.blocked_pairs.map(bp=>
+      `${c.univ_a.name} ${bp.a_slot.split(" ")[0]} × ${c.univ_b.name} ${bp.b_slot.split(" ")[0]}`));
+
+    const rows = ids.map(id=>{
+      const sl = (ST.slots[id]||[]);
+      const bars = sl.map(x=>{
+        const a=toMin(x[1]), b=toMin(x[2]);
+        // 이 교시가 다른 대학의 모든 교시와 충돌하면 no
+        const bad = cf.some(c=>{
+          const side = c.univ_a.id===id ? "a_slot" : (c.univ_b.id===id ? "b_slot" : null);
+          if(!side) return false;
+          const mine = c.combos.filter(k=>k[side]===x[0]);
+          return mine.length>0 && mine.every(k=>!k.feasible);
+        });
+        const cls = bad ? "no" : "pick";
+        const left = m2x(a,lo,hi), w = m2x(b,lo,hi)-left;
+        return `<span class="gseg ${cls}" style="left:${left}%;width:${w}%"
+                 title="${x[0]}">${x[1]}</span>`;
+      }).join("");
+      return `<div class="grow"><div class="gname">${NAME[id]||id}</div>
+              <div class="gbar">${bars}</div></div>`;
+    }).join("");
+
+    const dd = day.slice(5).replace("-","/");
+    const wd = ["일","월","화","수","목","금","토"][new Date(day).getDay()];
+    return `<div class="clash ${blocked.length?"bad":""}">
+      <b>${dd}(${wd}) — ${ids.map(i=>NAME[i]||i).join(" · ")} 같은 날</b>
+      ${blocked.length
+        ? `충돌: ${blocked.join(" / ")} → 이 조합은 <b style="display:inline">병행 불가</b>`
+        : "교시를 잘 고르면 모두 응시할 수 있습니다."}
+      <div class="gantt">${rows}
+        <div class="gaxis"><div></div><div><span>${hm(lo)}</span><span>${hm(hi)}</span></div></div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+/** 실행 가능한 6장 조합 */
+function renderCombos(){
+  const host = document.getElementById("combos");
+  if(!host) return;
+  const combos = ST.feasible_combos || [];
+  // 공개 배포본에는 조합(개인 선택 기반)이 없다 → 섹션 생략
+  if(!combos.length){ host.innerHTML=""; return; }
+
+  const must = new Set(ST.must_include||[]);
+  // 시험일이 적게 몰린 조합 = 체력 부담이 적은 조합을 위로
+  const sorted = combos.slice().sort((a,b)=>
+    a.busiest_day-b.busiest_day || a.exam_days-b.exam_days);
+
+  const rules = (ST.combo_constraints||[]).map(r=>{
+    const t = r.replace(/^★\s*/,"");
+    return r.startsWith("★") ? `<b>★ ${t}</b>` : t;
+  }).join("<br>");
+
+  host.innerHTML = `
+    <h2>실행 가능한 6장 조합</h2>
+    <div class="sub">
+      고사일이 겹쳐도 교시가 다르면 병행할 수 있습니다. 아래는 <b>${combos.length}개 조합</b> 전부 —
+      이동 여유 ${ST.travel_buffer_min}분 이상을 확보한 것만 남겼습니다.
+      같은 날 시험이 적은 순서로 정렬했습니다.
+    </div>
+    <div class="crule">${rules}</div>
+    ${sorted.map((c,i)=>`
+      <div class="cbox ${i===0?"best":""}">
+        ${i===0?'<span class="ctag">같은 날 부담이 가장 적음</span>':""}
+        <div class="cunis">${c.names.map((n,k)=>
+          `<span class="cuni ${must.has(c.universities[k])?"fixed":""}">${n}</span>`).join("")}</div>
+        ${Object.entries(c.plan).map(([d,items])=>{
+          const wd=["일","월","화","수","목","금","토"][new Date(d).getDay()];
+          return `<div class="cday">
+            <div class="d">${d.slice(5).replace("-","/")}(${wd})</div>
+            <div class="v">${items.map(x=>
+              `${x.name} <i>${x.slot}</i>`).join(" → ")}</div></div>`;
+        }).join("")}
+      </div>`).join("")}`;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   학과 비교표 — 모집인원 · 전년 경쟁률 · 고사 교시를 한 화면에
+   ══════════════════════════════════════════════════════ */
+let DT_SORT = "rate";     // rate | quota | univ
+let DT_ONLY = false;      // 경쟁률 있는 학과만
+
+function renderDeptTable(){
+  const host = document.getElementById("deptbl");
+  if(!host) return;
+  const rows = [];
+  (window.DATA.universities||[]).forEach(u=>{
+    (u.departments||[]).forEach(d=>{
+      rows.push({
+        univ:u.name, uid:u.id, name:d.name, college:d.college,
+        quota:d.quota, tier:d.tier, slot:d.slot,
+        comp:d.comp||null, actual:d.actual||null,
+      });
+    });
+  });
+
+  const view = rows
+    .filter(r=>!DT_ONLY || r.comp || r.actual)
+    .sort((a,b)=>{
+      if(DT_SORT==="quota") return (b.quota||0)-(a.quota||0);
+      if(DT_SORT==="univ")  return a.univ.localeCompare(b.univ) || (b.quota||0)-(a.quota||0);
+      const ra=(a.actual?a.actual.rate:(a.comp?a.comp.rate:null));
+      const rb=(b.actual?b.actual.rate:(b.comp?b.comp.rate:null));
+      if(ra==null && rb==null) return (b.quota||0)-(a.quota||0);
+      if(ra==null) return 1;
+      if(rb==null) return -1;
+      return ra-rb;   // 경쟁률 낮은 순 = 유리한 순
+    });
+
+  const body = view.map(r=>{
+    const rate = r.actual ? r.actual.rate : (r.comp ? r.comp.rate : null);
+    const meet = r.actual ? r.actual.meet : null;
+    const real = r.actual ? r.actual.real : null;
+    const yr   = r.comp ? r.comp.year : (r.actual ? "2026" : null);
+    const off  = r.actual || (r.comp && r.comp.src==="공식공시");
+    return `<tr>
+      <td class="uni-cell">${r.univ}</td>
+      <td class="${r.tier==="최상위"?"t1":""}">${r.name}${
+        r.tier==="최상위"?' <span class="src" style="background:var(--tier1-soft);color:var(--tier1)">최상위</span>':""}</td>
+      <td class="n">${r.quota!=null?r.quota:'<span class="dim">–</span>'}</td>
+      <td class="n">${rate!=null?rate.toFixed(1):'<span class="dim">미확인</span>'}</td>
+      <td class="n">${meet!=null?meet.toFixed(1)+"%":'<span class="dim">–</span>'}</td>
+      <td class="n">${real!=null?real.toFixed(1):'<span class="dim">–</span>'}</td>
+      <td>${yr?`<span class="src ${off?"off":""}">${yr} ${off?"공식":"보도"}</span>`:""}</td>
+      <td class="dim" style="font-size:11px">${r.slot||""}</td>
+    </tr>`;
+  }).join("");
+
+  host.innerHTML = `
+    <h2>학과별 모집인원 · 경쟁률</h2>
+    <div class="sub">
+      전 대학 <b>${rows.length}개 학과</b> 모집인원은 모집요강 원문 대조본입니다.
+      경쟁률은 <b>전년도(2026학년도) 실적</b>이라 2027 모집인원이 줄어든 학과는 실제로 더 오릅니다.
+      <b>실질경쟁률</b>은 수능최저 미충족자를 걷어낸 수치로, 명목 경쟁률보다 훨씬 현실적입니다 —
+      한양대만 학과별로 공개합니다.
+    </div>
+    <div class="dtfilter">
+      <button data-s="rate"  aria-pressed="${DT_SORT==="rate"}">경쟁률 낮은 순</button>
+      <button data-s="quota" aria-pressed="${DT_SORT==="quota"}">모집인원 많은 순</button>
+      <button data-s="univ"  aria-pressed="${DT_SORT==="univ"}">대학별</button>
+      <button data-o="1"     aria-pressed="${DT_ONLY}">경쟁률 있는 학과만</button>
+    </div>
+    <div class="dtwrap"><table class="dt">
+      <thead><tr>
+        <th>대학</th><th>학과</th><th style="text-align:right">2027<br>모집</th>
+        <th style="text-align:right">경쟁률</th><th style="text-align:right">최저<br>충족률</th>
+        <th style="text-align:right">실질<br>경쟁률</th><th>출처</th><th>고사 교시</th>
+      </tr></thead>
+      <tbody>${body}</tbody>
+    </table></div>`;
+
+  host.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{
+    DT_SORT=b.dataset.s; renderDeptTable();
+renderSchedule();
+renderBrief();
+renderPick();
+  });
+  host.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{
+    DT_ONLY=!DT_ONLY; renderDeptTable();
+renderSchedule();
+renderBrief();
+renderPick();
+  });
+}
+
+
+/* ══════════════════════════════════════════════════════
+   전형별 일정표 — 접수 · 서류 · 고사 · 발표를 한 줄로
+   ══════════════════════════════════════════════════════ */
+function renderSchedule(){
+  const host = document.getElementById("schtbl");
+  if(!host) return;
+  const WD = ["일","월","화","수","목","금","토"];
+  const fmt = o => {
+    if(!o || !o.date) return '<span class="dim">–</span>';
+    const [,m,d] = o.date.split("-");
+    return `<span class="dt">${+m}/${+d}(${WD[new Date(o.date).getDay()]})</span>` +
+           (o.time ? `<span class="tm">${o.time}</span>` : "");
+  };
+
+  const rows = (window.DATA.universities||[]).slice()
+    .sort((a,b)=>(a.exam.date||"").localeCompare(b.exam.date||""))
+    .map(u=>{
+      const s = u.schedule||{}, e = u.exam||{};
+      const v = e.venue||{};
+      // 같은 날 다른 대학과 겹치면 강조
+      const same = (window.DATA.universities||[])
+        .filter(x=>x.id!==u.id && x.exam && x.exam.date===e.date).length;
+      const dur = e.duration_min ? `${e.duration_min}분` : "";
+      const time = e.start_time
+        ? `${e.start_time}${e.end_time?"~"+e.end_time:""}${dur?" · "+dur:""}`
+        : (dur || "교시별 배정");
+      return `<tr class="${same?"hot":""}">
+        <td class="u">${u.name}${u.target_only?`<br><span class="tm">${u.target_only}</span>`:""}</td>
+        <td>${fmt(s.application_start)}</td>
+        <td>${fmt(s.application_end)}</td>
+        <td>${fmt(s.document_deadline)}</td>
+        <td>${fmt({date:e.date})}<span class="tm">${time}</span>${
+          same?'<span class="tm" style="color:var(--warn)">같은 날 '+same+'곳 더</span>':""}</td>
+        <td class="venue">${v.campus||'<span class="dim">–</span>'}${
+          v.announce_date?`<br><b>고사장 ${v.announce_date.slice(5).replace("-","/")}</b>`:""}</td>
+        <td>${fmt(s.result_announcement)}</td>
+      </tr>`;
+    }).join("");
+
+  host.innerHTML = `
+    <h2>전형별 일정 한눈에</h2>
+    <div class="sub">
+      마감 <b>시각</b>이 대학마다 다릅니다 — 날짜만 보고 안심하면 안 됩니다.
+      연세·고려는 <b>9/9 17:00</b>에 이틀 먼저 닫히고, 서류는 서강 18:00 · 경희 17:00 · 중앙 16:00 로 갈립니다.
+      노란 줄은 고사일이 다른 대학과 겹치는 전형입니다.
+    </div>
+    <div class="dtwrap"><table class="st">
+      <thead><tr>
+        <th>전형</th><th>접수 시작</th><th>접수 마감</th><th>서류 마감</th>
+        <th>논술고사</th><th>고사 장소</th><th>합격 발표</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   전략 요약 — 이 판에서 실제로 결정해야 하는 것만
+   ══════════════════════════════════════════════════════ */
+function renderBrief(){
+  const host = document.getElementById("brief");
+  if(!host) return;
+  const sc = (window.DATA.scores)||{};
+  // 공개 배포본에는 성적이 없다 → 입력 안내를 띄운다
+  if(!sc.current){
+    host.innerHTML = `
+      <h2>전략 요약</h2>
+      <div class="lead">
+        <b>성적을 입력하면</b> 9개 전형의 수능최저 충족 여부가 자동으로 계산됩니다.
+        위쪽 <b>성적 입력하기</b>를 눌러 등급을 넣어 주세요 —
+        입력값은 <b>이 기기의 브라우저에만</b> 저장되고 서버로 전송되지 않습니다.
+      </div>
+      <div class="bgrid">
+        <div class="bcell">
+          <div class="k">이 판이 답하는 것</div>
+          <div class="v">대학별 <b>학과 1개씩 6장</b>을 어떻게 짜야
+            고사일이 겹치지 않고 경쟁률이 유리한지 — 그 조합을 찾는 것입니다.</div>
+        </div>
+        <div class="bcell warn">
+          <div class="k">11/21 — 이 판의 최대 제약</div>
+          <div class="v">고려대·서강대·경희대·성대(언어형)가 같은 날입니다.
+            <b>고려대는 학과별로 오전/오후조가 고정</b>되어 있어
+            학과를 고르는 것이 곧 시간을 고르는 것입니다.</div>
+        </div>
+        <div class="bcell">
+          <div class="k">실질경쟁률로 보라</div>
+          <div class="v">중앙대 일반형은 최저 충족률이 <b>22.3%</b>라
+            명목 77:1이 실질 <b>18:1</b>이 됩니다. 최저를 넉넉히 넘긴 지원자에게
+            명목 경쟁률은 과장된 숫자입니다. 연세·중앙 창의형은 최저가 없어 <b>명목 = 실질</b>입니다.</div>
+        </div>
+        <div class="bcell">
+          <div class="k">성적은 저장되지 않습니다</div>
+          <div class="v">이 페이지는 공개 주소라 성적을 담고 있지 않습니다.
+            입력한 등급은 <b>localStorage</b>에만 남고, 다른 사람이 같은 주소를 열어도 보이지 않습니다.</div>
+        </div>
+      </div>`;
+    return;
+  }
+  const mv = (sc.min_csat_verdicts)||{};
+  const cur = sc.current||{}, tgt = sc.target||{};
+  const gs = o => o.subjects
+    ? Object.entries(o.subjects).map(([k,v])=>`${k.replace(/탐구\d/,v.과목||k)} ${v.등급}`).join(" · ")
+    : "";
+
+  // 여유가 가장 적은 전형 = 성적이 흔들리면 먼저 무너지는 곳
+  const tight = Object.entries(mv)
+    .filter(([k,v])=>!k.startsWith("_") && v.current==="충족" && typeof v.current_margin==="number")
+    .sort((a,b)=>a[1].current_margin-b[1].current_margin);
+
+  host.innerHTML = `
+    <h2>전략 요약</h2>
+    <div class="lead">
+      ${mv._headline ? mv._headline.replace(/^★\s*/,"") : ""}
+    </div>
+    <div class="bgrid">
+      <div class="bcell">
+        <div class="k">현재 실측 · 9월 모평</div>
+        <div class="v">${gs(cur)}<br>
+          → 8개 전형 <b>수능최저 전부 충족</b>. 최저는 더 이상 6장 선택의 제약이 아닙니다.</div>
+      </div>
+      <div class="bcell">
+        <div class="k">목표 (의지치)</div>
+        <div class="v">${gs(tgt)}<br>
+          → 달성하면 여유만 커집니다. <b>충족/미충족 결론은 그대로</b>이므로,
+          목표 달성을 전제로 대학을 고르지 마세요.</div>
+      </div>
+      ${tight.length ? `
+      <div class="bcell warn">
+        <div class="k">가장 먼저 무너지는 곳</div>
+        <div class="v">${tight.slice(0,2).map(([k,v])=>
+          `<b>${k}</b> 여유 ${v.current_margin}등급${
+            v.note?` — ${v.note.split(".")[0]}`:""}`).join("<br>")}
+          <br>수학이 3등급으로 내려가면 이 순서로 탈락합니다.</div>
+      </div>` : ""}
+      <div class="bcell warn">
+        <div class="k">11/21 — 이 판의 최대 제약</div>
+        <div class="v">
+          경희대 한의예과가 <b>15:00~17:00</b>에 고정됩니다. 그 결과
+          서강대는 <b>2부(19:00) 학과만</b>, 고려대는 <b>오전조 학과만</b> 병행 가능합니다.
+          서강대 1부(수학·전자·기계·인공지능)를 고르면 서강대를 버리는 셈입니다.</div>
+      </div>
+      <div class="bcell">
+        <div class="k">실질경쟁률로 보라</div>
+        <div class="v">
+          중앙대 일반형은 최저 충족률이 <b>22.3%</b>라 명목 77:1이 실질 <b>18:1</b>이 됩니다.
+          최저를 넉넉히 넘긴 지원자에게는 명목 경쟁률이 과장된 숫자입니다.
+          반대로 연세·중앙 창의형은 최저가 없어 <b>명목 = 실질</b>입니다.</div>
+      </div>
+      <div class="bcell">
+        <div class="k">남은 결정</div>
+        <div class="v">
+          경희대 1장은 확정이므로 <b>나머지 5장</b>과 대학별 학과 1개가 전부입니다.
+          아래 조합표에서 시험일이 몰리지 않는 것을 먼저 보고,
+          학과는 <b>실질경쟁률</b>이 낮은 쪽을 고르세요.</div>
+      </div>
+    </div>`;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   잠정 선택 6장 + 미결 쟁점 + 선택지 A/B/C
+   데이터: data/shortlist.json
+   ══════════════════════════════════════════════════════ */
+function renderPick(){
+  const host = document.getElementById("pick");
+  const S = window.DATA.shortlist;
+  if(!host) return;
+  if(!S || !S.confirmed){ host.innerHTML = ""; return; }
+
+  const fixed = S.confirmed.items.map(x=>`
+    <div class="frow">
+      <div class="nm">${x.univ_name} <b>${x.dept}</b>
+        <small>${x.exam} · 최저 ${x.min_csat}</small>
+        <small>${x.why}${x.caution?` <b style="color:var(--accent)">${x.caution}</b>`:""}</small>
+      </div>
+      <div class="mt"><b>${x.quota}명</b>
+        <span>${x.rate_2026?x.rate_2026+":1":"–"}</span>
+        ${x.real_rate_2026?`<span>실질 ${x.real_rate_2026}</span>`:""}
+      </div>
+    </div>`).join("");
+
+  const I = S.issue;
+  const issue = !I ? "" : `
+    <div class="issue">
+      <span class="tag">미결 쟁점 · ${I.severity==="blocking"?"결정 필요":"확인 필요"}</span>
+      <h3>${I.title}</h3>
+      <p>${I.detail}</p>
+      <div class="facts">
+        ${(I.verified_facts||[]).map(f=>`<div class="ok">${f}</div>`).join("")}
+        ${(I.unverified||[]).map(f=>`<div class="no">${f} — 요강 미명시</div>`).join("")}
+      </div>
+      <div class="todo"><b>원서접수(9/8~9/11) 전에 확인할 것</b>
+        ${(I.action_required||[]).map(a=>`· ${a}`).join("<br>")}
+      </div>
+    </div>`;
+
+  const O = S.options||{};
+  const order = ["A","B","C"].filter(k=>O[k]);
+  const opts = order.map(k=>{
+    const o = O[k];
+    const ok = o.schedule_ok;
+    const cand = (o.candidates||o.morning_slot_candidates||[]);
+    return `<div class="opt ${o.recommended?"rec":""}">
+      <div class="oh"><span class="ol">${k}</span>
+        <span class="st ${ok?"ok":"no"}">${ok?`여유 ${o.gap_min}분`:`여유 ${o.gap_min}분 위험`}</span>
+        ${o.recommended?'<span class="st ok">추천</span>':""}
+      </div>
+      <h4>${o.label}</h4>
+      <div class="body">
+        ${o.detail?`<p style="margin:6px 0">${o.detail}</p>`:""}
+        ${o.constraint?`<p style="margin:6px 0;color:var(--accent)"><b>${o.constraint}</b></p>`:""}
+        ${o.blocker?`<p style="margin:6px 0;color:var(--accent)"><b>${o.blocker}</b></p>`:""}
+        ${o.tradeoff?`<p style="margin:6px 0">${o.tradeoff}</p>`:""}
+        ${o.upside?`<p style="margin:6px 0">${o.upside}</p>`:""}
+        ${o.note?`<p style="margin:6px 0">${o.note}</p>`:""}
+        ${cand.length?`<div class="cand">${cand.map(x=>`
+          <div class="${x.pick?"p":""}"><span>${x.dept} ${x.quota}명${
+            x.pick?` · ${x.pick}`:""}${x.note&&!x.pick?` · ${x.note}`:""}</span>
+          <span class="r">${x.rate_2026?x.rate_2026+":1":"–"}</span></div>`).join("")}</div>`:""}
+      </div>
+    </div>`;
+  }).join("");
+
+  host.innerHTML = `
+    <h2>잠정 선택과 남은 결정</h2>
+    <div class="sub">
+      <b>${S.status}</b> — 확정 ${S.confirmed.items.length}장은 고사일이 겹치지 않아 그대로 갈 수 있습니다.
+      남은 1장은 아래 쟁점 때문에 아직 정하지 않았습니다.
+    </div>
+    <div class="fixed5">${fixed}</div>
+    ${issue}
+    <div class="opts">${opts}</div>`;
+}
+
+function paint(){
+  const g = loadGrades(), p = loadPct();
+  const src = MODE==="grade" ? g : p;
+  document.querySelectorAll("#ginputs input").forEach(i=>{
+    const v = src[i.dataset.f];
+    i.value = v==null ? "" : v;
+  });
+
+  document.querySelectorAll(".verdict").forEach(el=>{
+    const r = judge(el.dataset.uid, g);
+    el.textContent = r.verdict==="미적용" ? "최저 없음" : r.verdict;
+    el.className = "verdict v-"+VMAP[r.verdict];
+    el.title = r.detail;
+  });
+
+  document.querySelectorAll(".judgeline").forEach(el=>{
+    const r = judge(el.dataset.uid, g);
+    el.className = "judgeline j-"+VMAP[r.verdict];
+    el.innerHTML = `<b>${r.verdict==="미적용"?"수능최저 없음":"수능최저 "+r.verdict}</b> ${r.detail}`;
+  });
+
+  renderStrategy();
+
+  const anyG = FIELDS.some(f=>g[f]!=null);
+  const anyP = PCT_FIELDS.some(f=>p[f]!=null);
+  const sum = document.getElementById("gradeSummary");
+  if(!anyG && !anyP){
+    sum.textContent = "성적 입력하기";
+    gToggle.classList.remove("has");
+  } else {
+    const pass = Object.keys(RULES).filter(id=>{
+      const v = judge(id,g).verdict; return v==="충족"||v==="미적용";
+    }).length;
+    sum.textContent = anyG ? `내 성적 · 지원 가능 ${pass}곳` : "백분위 입력됨";
+    gToggle.classList.add("has");
+  }
+}
+
+const gToggle = document.getElementById("gradeToggle");
+renderInputs();
+renderActual();
+renderProbs();
+renderClash();
+renderCombos();
+renderDeptTable();
+renderSchedule();
+renderBrief();
+renderPick();
+
+document.querySelectorAll(".gtab").forEach(t=>{
+  t.addEventListener("click", ()=>{
+    MODE = t.dataset.m;
+    document.querySelectorAll(".gtab").forEach(x=>
+      x.setAttribute("aria-selected", String(x.dataset.m===MODE)));
+    renderInputs(); paint();
+  });
+});
+
+document.getElementById("ginputs").addEventListener("input", e=>{
+  const i = e.target.closest("input"); if(!i) return;
+  const isG = MODE==="grade";
+  const store = isG ? loadGrades() : loadPct();
+  let v = parseInt(i.value, 10);
+  if(Number.isNaN(v)) delete store[i.dataset.f];
+  else {
+    v = isG ? Math.min(9, Math.max(1, v)) : Math.min(100, Math.max(0, v));
+    i.value = v; store[i.dataset.f] = v;
+  }
+  (isG ? saveGrades : savePct)(store);
+  paint();
+});
+
+document.getElementById("clearGrades").addEventListener("click", ()=>{
+  try{ localStorage.removeItem(KEY); localStorage.removeItem(PKEY); }catch(e){}
+  paint();
+});
+
+gToggle.addEventListener("click", ()=>{
+  const p = document.getElementById("gradePanel");
+  const open = !p.hidden;
+  p.hidden = open;
+  gToggle.setAttribute("aria-expanded", String(!open));
+  if(!open) p.querySelector("input")?.focus();
+});
+
+paint();
+
+// expand / collapse
+document.querySelectorAll(".uhead").forEach(h=>{
+  const toggle = ()=>{
+    const a = h.closest(".uni");
+    const open = a.dataset.open === "true";
+    a.dataset.open = open ? "false" : "true";
+    h.setAttribute("aria-expanded", open ? "false" : "true");
+  };
+  h.addEventListener("click", toggle);
+  h.addEventListener("keydown", e=>{
+    if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); }
+  });
+});
+
+// filters (AND)
+const active = new Set();
+document.getElementById("filters").addEventListener("click", e=>{
+  const b = e.target.closest(".fbtn");
+  if(!b) return;
+  const f = b.dataset.f;
+  active.has(f) ? active.delete(f) : active.add(f);
+  b.setAttribute("aria-pressed", active.has(f));
+  document.querySelectorAll(".uni").forEach(c=>{
+    const tags = c.dataset.tags.split(" ");
+    c.classList.toggle("hidden", ![...active].every(t=>tags.includes(t)));
+  });
+});
+</script>
